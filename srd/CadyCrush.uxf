@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>340</x>
-      <y>230</y>
+      <y>280</y>
       <w>210</w>
       <h>190</h>
     </coordinates>
@@ -14,10 +14,9 @@
 -color: Color
 -pos: Position
 --
-+getPos
-+setPos
-+getColor
-+setColor
++getPos()
++setColor()
++getColor()
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -25,7 +24,7 @@
     <id>Relation</id>
     <coordinates>
       <x>90</x>
-      <y>410</y>
+      <y>460</y>
       <w>370</w>
       <h>180</h>
     </coordinates>
@@ -36,7 +35,7 @@
     <id>Relation</id>
     <coordinates>
       <x>430</x>
-      <y>410</y>
+      <y>460</y>
       <w>140</w>
       <h>180</h>
     </coordinates>
@@ -47,7 +46,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>460</x>
-      <y>570</y>
+      <y>620</y>
       <w>210</w>
       <h>80</h>
     </coordinates>
@@ -55,14 +54,15 @@
 --
 
 --
-</panel_attributes>
++Candy()
++~Candy()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>570</y>
+      <y>620</y>
       <w>210</w>
       <h>80</h>
     </coordinates>
@@ -76,7 +76,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>230</x>
-      <y>570</y>
+      <y>620</y>
       <w>210</w>
       <h>80</h>
     </coordinates>
@@ -91,7 +91,7 @@
     <id>Relation</id>
     <coordinates>
       <x>540</x>
-      <y>300</y>
+      <y>350</y>
       <w>300</w>
       <h>40</h>
     </coordinates>
@@ -103,7 +103,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>820</x>
-      <y>220</y>
+      <y>270</y>
       <w>210</w>
       <h>190</h>
     </coordinates>
@@ -113,7 +113,10 @@
 -item: Item
 -isFrozen: int={0,1,2}
 --
-+getItemColor
++clear()
++getItem()
++getPosition()
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -121,16 +124,18 @@
     <id>UMLClass</id>
     <coordinates>
       <x>1320</x>
-      <y>220</y>
+      <y>270</y>
       <w>210</w>
       <h>190</h>
     </coordinates>
     <panel_attributes>Matrice
 --
 -size: int
--mat:vector&lt;vector&lt;cell&gt;&gt;
+-mat:vector&lt;vector&lt;cell&gt; &gt;
 --
-+getItemColor
++getSize()
++getCell(Position p)
++clearCase()
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -138,7 +143,7 @@
     <id>Relation</id>
     <coordinates>
       <x>1020</x>
-      <y>300</y>
+      <y>350</y>
       <w>320</w>
       <h>40</h>
     </coordinates>

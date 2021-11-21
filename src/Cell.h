@@ -17,7 +17,6 @@ public:
 
     // Méthodes
     void clear(){ delete item;}
-    void setPosition(Position new_position ){position=new_position;}
     Item *getItem()const{return item;}
     Position getPosition()const{return position;}
     // surcharge

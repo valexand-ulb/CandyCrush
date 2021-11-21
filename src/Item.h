@@ -14,7 +14,6 @@ protected:
     int color=0;
 public:
     //getter setter
-    void setPosition(Position new_position ){position=new_position;}
     Position getPosition()const{return position;}
     void setColor(int new_color){color=new_color;}
     int getColor()const{return color;}
