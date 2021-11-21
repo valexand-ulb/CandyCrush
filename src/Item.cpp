@@ -3,3 +3,8 @@
 //
 
 #include "Item.h"
+
+std::ostream& operator<<(std::ostream& flux, const Item &i){
+    flux << i.getColor();
+    return flux;
+}

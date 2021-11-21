@@ -1,4 +1,4 @@
-FLAGS=-Wall -Wextra -Wpedantic -lfltk
+FLAGS=--std='c++20' -Wall -Wextra -Wpedantic -lfltk
 
 all:CandyCrush
 
@@ -15,6 +15,5 @@ Matrice.o: Matrice.cpp
 	g++ $(FLAGS) -c Matrice.cpp -o Matrice.o
 main.o: main.cpp
 	g++ $(FLAGS) -c main.cpp -o main.o
-
 clear:
 	rm *.o

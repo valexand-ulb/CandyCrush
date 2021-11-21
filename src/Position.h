@@ -4,7 +4,6 @@
 
 #ifndef CANDYCRUSH_POSITION_H
 #define CANDYCRUSH_POSITION_H
-using namespace std;
 
 class Position {
 private:

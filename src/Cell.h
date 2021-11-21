@@ -12,10 +12,16 @@ private:
     Item *item;
     int frozen=0;
 public:
+    //Constructeurs
     Cell(Position pos);
+
+    // Méthodes
     void clear(){ delete item;}
     void setPosition(Position new_position ){position=new_position;}
+    Item *getItem()const{return item;}
     Position getPosition()const{return position;}
+    // surcharge
+    friend std::ostream& operator<<(std::ostream& flux, const Cell& c);
 };
 
 

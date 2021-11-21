@@ -13,19 +13,22 @@ protected:
     Position position;
     int color=0;
 public:
+    //getter setter
     void setPosition(Position new_position ){position=new_position;}
     Position getPosition()const{return position;}
     void setColor(int new_color){color=new_color;}
     int getColor()const{return color;}
+    // opérateur
+    // surcharge
+    friend std::ostream& operator<<(std::ostream& flux, const Item &i);
 };
 
 // Classe Bonbon
 class Candy: public Item{
 private:
 public:
-    Candy(Position pos, int color){
-    std::cout << "Construction de candy de couleur: " << color << std::endl;
-    this->position=pos; this->color=color;}
+    Candy(Position pos, int color){this->position=pos; this->color=color;}
+    ~Candy();
 };
 
 // Classe Bonus
