@@ -27,7 +27,7 @@ class Candy: public Item{
 private:
 public:
     Candy(Position pos, int color){this->position=pos; this->color=color;}
-    ~Candy();
+    ~Candy(){std::cout << "mort de item: (" << position.getPosX() << "," << position.getPosY() << ")\n";}
 };
 
 // Classe Bonus

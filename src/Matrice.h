@@ -20,7 +20,7 @@ public:
     int getSize()const{return size;}
     //méthodes
     Cell getCell(Position p)const{return mat[p.getPosX()][p.getPosY()];}
-    void clearCase(Position p);
+    void clearCase(Position p){getCell(p).clear();}
     //surcharge
     friend std::ostream& operator<<(std::ostream& flux, const Matrice &m);
 };

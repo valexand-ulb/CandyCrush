@@ -10,6 +10,7 @@ Matrice::Matrice(int size):size(size){
         }
     }
 }
+
 std::ostream& operator<<(ostream &flux,const Matrice& M) {
     for (int i=0; i<M.getSize(); i++){
         for (int j=0;j<M.getSize();j++){

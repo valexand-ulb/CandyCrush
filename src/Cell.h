@@ -10,13 +10,15 @@ class Cell {
 private:
     Position position;
     Item *item;
+    bool empty= true;
     int frozen=0;
 public:
     //Constructeurs
     Cell(Position pos);
-
+    // getter / setters
+    bool isEmpty()const{return empty;}
     // Méthodes
-    void clear(){ delete item;}
+    void clear(){ delete item; empty= true;}
     Item *getItem()const{return item;}
     Position getPosition()const{return position;}
     // surcharge
