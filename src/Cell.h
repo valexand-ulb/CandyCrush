@@ -9,7 +9,7 @@
 class Cell {
 private:
     Position position;
-    Item *pItem=new Candy{rand()%5};
+    Item *pItem=new Candy{rand()%6};
     bool empty= true;
     int frozen=0;
 public:
