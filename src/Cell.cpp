@@ -4,16 +4,17 @@
 
 #include "Cell.h"
 Cell::Cell(Position pos):position(pos){
-    item = new Candy{pos, rand()%5};
+    pItem->setPosition(pos);
     empty=true;
 }
 
-Cell::Cell(const Cell &other) {
-    position=other.position;
-    item= other.item;
+Cell::Cell(const Cell &other): position(other.position), pItem(other.pItem) {
+}
+
+void Cell::swap(Cell &other) {
 }
 
 std::ostream& operator<<(std::ostream& flux, const Cell& c){
-    flux << *c.getItem();
+    c.getItem()!= nullptr ? flux << *c.getItem() : flux << '.';
     return flux;
 }

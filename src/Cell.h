@@ -9,7 +9,7 @@
 class Cell {
 private:
     Position position;
-    Item *item;
+    Item *pItem=new Candy{rand()%5};
     bool empty= true;
     int frozen=0;
 public:
@@ -18,14 +18,15 @@ public:
     Cell(const Cell &other); //copie
 
     // getter / setters
-    Item *getItem()const{return item;}
-    void setItem(Item *new_item){item=new_item;}
+    Item *getItem()const{return pItem;}
+    void setItem(Item *new_item){pItem=new_item;}
     Position getPosition()const{return position;}
     void setPosition(Position new_pos){position=new_pos;}
 
     // Méthodes
     bool isEmpty()const{return empty;}
-    void clear(){ delete item; empty= true;}
+    void clear(){ delete pItem; empty= true; pItem= nullptr;}
+    void swap(Cell &other);
 
     // surcharge
     friend std::ostream& operator<<(std::ostream& flux, const Cell& c);

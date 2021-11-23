@@ -7,7 +7,7 @@
 
 int main(){
     Matrice m{3};
-    //std::cout<< m << std::endl;
+    std::cout<< m << std::endl;
     m.clearCase({0,0});
     std::cout<< m << std::endl;
     return 0;

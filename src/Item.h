@@ -15,18 +15,20 @@ protected:
 public:
     //getter setter
     Position getPosition()const{return position;}
+    void setPosition(Position new_pos){position=new_pos;}
     void setColor(int new_color){color=new_color;}
     int getColor()const{return color;}
     // opérateur
     // surcharge
     friend std::ostream& operator<<(std::ostream& flux, const Item &i);
+    ~Item(){std::cout << "MORT DE ITEM" << std::endl;};
 };
 
 // Classe Bonbon
 class Candy: public Item{
 private:
 public:
-    Candy(Position pos, int color){this->position=pos; this->color=color;}
+    Candy(int color){this->color=color;}
     ~Candy(){std::cout << "mort de item: (" << position.getPosX() << "," << position.getPosY() << ")\n";}
 };
 
