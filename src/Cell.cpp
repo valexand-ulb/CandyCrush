@@ -11,7 +11,14 @@ Cell::Cell(Position pos):position(pos){
 Cell::Cell(const Cell &other): position(other.position), pItem(other.pItem) {
 }
 
-void Cell::swap(Cell &other) {
+void Cell::swap(Cell* other) {
+    Cell temp(*this);
+
+    position = other->position;
+    pItem = other->pItem;
+
+    other->position = temp.position;
+    other->pItem = temp.pItem;
 }
 
 std::ostream& operator<<(std::ostream& flux, const Cell& c){

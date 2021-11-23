@@ -6,9 +6,11 @@
 #include "Position.h"
 
 int main(){
-    Matrice m{3};
+    Matrice m{10};
     std::cout<< m << std::endl;
-    m.clearCase({0,0});
+    m.swap({0,0},{9,9});
     std::cout<< m << std::endl;
+
+
     return 0;
 }

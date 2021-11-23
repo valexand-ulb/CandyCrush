@@ -20,7 +20,9 @@ public:
     int getSize()const{return size;}
     //méthodes
     Cell getCell(Position p)const{ return mat[p.getPosX()][p.getPosY()];}
+    Cell* getPCell(Position p){return &(mat[p.getPosX()][p.getPosY()]);}
     void clearCase(Position p){getCell(p).clear();}
+    void swap(Position p1, Position p2);
     //surcharge
     friend std::ostream& operator<<(std::ostream& flux,const Matrice &m);
 };

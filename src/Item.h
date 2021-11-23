@@ -21,7 +21,7 @@ public:
     // opérateur
     // surcharge
     friend std::ostream& operator<<(std::ostream& flux, const Item &i);
-    ~Item(){std::cout << "MORT DE ITEM" << std::endl;};
+    virtual ~Item(){std::cout << "MORT DE ITEM" << std::endl;};
 };
 
 // Classe Bonbon

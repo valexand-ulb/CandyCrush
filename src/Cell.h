@@ -26,7 +26,7 @@ public:
     // Méthodes
     bool isEmpty()const{return empty;}
     void clear(){ delete pItem; empty= true; pItem= nullptr;}
-    void swap(Cell &other);
+    void swap(Cell *other);
 
     // surcharge
     friend std::ostream& operator<<(std::ostream& flux, const Cell& c);
