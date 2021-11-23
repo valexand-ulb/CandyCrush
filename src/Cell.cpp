@@ -8,6 +8,11 @@ Cell::Cell(Position pos):position(pos){
     empty=true;
 }
 
+Cell::Cell(const Cell &other) {
+    position=other.position;
+    item= other.item;
+}
+
 std::ostream& operator<<(std::ostream& flux, const Cell& c){
     flux << *c.getItem();
     return flux;

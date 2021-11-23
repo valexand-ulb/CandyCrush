@@ -15,12 +15,18 @@ private:
 public:
     //Constructeurs
     Cell(Position pos);
+    Cell(const Cell &other); //copie
+
     // getter / setters
-    bool isEmpty()const{return empty;}
-    // Méthodes
-    void clear(){ delete item; empty= true;}
     Item *getItem()const{return item;}
+    void setItem(Item *new_item){item=new_item;}
     Position getPosition()const{return position;}
+    void setPosition(Position new_pos){position=new_pos;}
+
+    // Méthodes
+    bool isEmpty()const{return empty;}
+    void clear(){ delete item; empty= true;}
+
     // surcharge
     friend std::ostream& operator<<(std::ostream& flux, const Cell& c);
 };
