@@ -11,6 +11,11 @@ Matrice::Matrice(int size):size(size){
     }
 }
 
+void Matrice::clearCase(Position p) {
+    getPCell(p)->clear();
+}
+
+
 void Matrice::swap(Position p1, Position p2) {
     Cell* c1= getPCell(p1);
     Cell* c2= getPCell(p2);

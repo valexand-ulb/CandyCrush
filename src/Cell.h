@@ -10,7 +10,7 @@ class Cell {
 private:
     Position position;
     Item *pItem=new Candy{rand()%6};
-    bool empty= true;
+    bool empty= false;
     int frozen=0;
 public:
     //Constructeurs
@@ -25,8 +25,8 @@ public:
 
     // Méthodes
     bool isEmpty()const{return empty;}
-    void clear(){ delete pItem; empty= true; pItem= nullptr;}
-    void swap(Cell *other);
+    void clear();
+    void swap(Cell* other);
 
     // surcharge
     friend std::ostream& operator<<(std::ostream& flux, const Cell& c);

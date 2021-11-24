@@ -10,26 +10,26 @@
 // classe abstraite
 class Item {
 protected:
-    Position position;
     int color=0;
 public:
+    //constructeurs
+    virtual ~Item(){};
     //getter setter
-    Position getPosition()const{return position;}
-    void setPosition(Position new_pos){position=new_pos;}
     void setColor(int new_color){color=new_color;}
     int getColor()const{return color;}
     // opérateur
     // surcharge
     friend std::ostream& operator<<(std::ostream& flux, const Item &i);
-    virtual ~Item(){std::cout << "MORT DE ITEM" << std::endl;};
 };
 
 // Classe Bonbon
-class Candy: public Item{
+class Candy: public virtual Item{
 private:
 public:
-    Candy(int color){this->color=color;}
-    ~Candy(){std::cout << "mort de item: (" << position.getPosX() << "," << position.getPosY() << ")\n";}
+    //constructeur
+    Candy(int clr){color=clr;}
+    ~Candy(){std::cout<<"mort de candy"<<std::endl;}
+
 };
 
 // Classe Bonus
