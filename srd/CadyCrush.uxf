@@ -1,70 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>4</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>340</x>
-      <y>280</y>
-      <w>210</w>
-      <h>190</h>
+      <x>112</x>
+      <y>432</y>
+      <w>84</w>
+      <h>76</h>
     </coordinates>
     <panel_attributes>/Item/
 --
 -color: Color
--pos: Position
+
 --
-+getPos()
-+setColor()
-+getColor()
-</panel_attributes>
++ ~Item(à:void
+
++setColor(int):void
++getColor()const:int</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>90</x>
-      <y>460</y>
-      <w>370</w>
-      <h>180</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>350.0;10.0;350.0;70.0;240.0;70.0;240.0;160.0;240.0;70.0;10.0;70.0;10.0;160.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>430</x>
-      <y>460</y>
-      <w>140</w>
-      <h>180</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0;120.0;70.0;120.0;160.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>460</x>
-      <y>620</y>
-      <w>210</w>
-      <h>80</h>
+      <x>188</x>
+      <y>572</y>
+      <w>56</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Item::Candy
 --
 
 --
-+Candy()
++Candy(int):void
 +~Candy()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>620</y>
-      <w>210</w>
-      <h>80</h>
+      <x>52</x>
+      <y>572</y>
+      <w>52</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>Item::PowerUp
 --
@@ -75,10 +53,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>230</x>
-      <y>620</y>
-      <w>210</w>
-      <h>80</h>
+      <x>116</x>
+      <y>572</y>
+      <w>60</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>Item::Frosting
 --
@@ -88,67 +66,158 @@
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>540</x>
-      <y>350</y>
-      <w>300</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-
-</panel_attributes>
-    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>820</x>
-      <y>270</y>
-      <w>210</w>
-      <h>190</h>
+      <x>288</x>
+      <y>428</y>
+      <w>84</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Cell
 --
 -position: Position
--item: Item
--isFrozen: int={0,1,2}
+-pItem: Item*
+-Empty: bool
+-frozen:int{0,1,2}
 --
-+clear()
-+getItem()
-+getPosition()
++Cell(Position):void
++Cell(const Cell &amp;other):void
 
++getItem()const:Item*
++setItem(Item*):void
++getPosition()const:Position
++setPosition(Position):void
+
++isEmpty()const:bool
++clear:void
++swap(Cell*);void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1320</x>
-      <y>270</y>
-      <w>210</w>
-      <h>190</h>
+      <x>464</x>
+      <y>428</y>
+      <w>96</w>
+      <h>92</h>
     </coordinates>
     <panel_attributes>Matrice
 --
 -size: int
 -mat:vector&lt;vector&lt;cell&gt; &gt;
 --
-+getSize()
-+getCell(Position p)
-+clearCase()
-</panel_attributes>
++Matrice(int):void
+
++getSize()const:int
++getCell(Position):Cell
++getPCell(Position)*Cell
+
++clearCase(Position):void
++swap(Position,Position):void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1020</x>
-      <y>350</y>
-      <w>320</w>
-      <h>40</h>
+      <x>368</x>
+      <y>476</y>
+      <w>104</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=*
+</panel_attributes>
+    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>192</x>
+      <y>480</y>
+      <w>104</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>240.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>308</y>
+      <w>84</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Position
+--
+-x:int
+-y:int
+--
++Position(int,int):void
+
++getPosX()const:int
++getPosy()const:int
++setPos(int,int):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>416</x>
+      <y>368</y>
+      <w>56</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes>10.0;20.0;300.0;20.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0;120.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>368</x>
+      <y>368</y>
+      <w>60</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>130.0;10.0;130.0;190.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>148</x>
+      <y>504</y>
+      <w>12</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>148</x>
+      <y>504</y>
+      <w>76</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0;170.0;100.0;170.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>72</x>
+      <y>504</y>
+      <w>88</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>200.0;10.0;200.0;100.0;10.0;100.0;10.0;170.0</additional_attributes>
   </element>
 </diagram>
