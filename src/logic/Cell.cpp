@@ -9,12 +9,12 @@ Cell::Cell(Position pos):position(pos){
 Cell::Cell(const Cell &other): position(other.position), pItem(other.pItem), empty(other.empty) {
 }
 
-Cell::Cell(const Cell &&other): position(other.position), pItem(other.pItem), empty(other.empty) {
-    delete other.pItem;
+Cell::Cell(Cell &&other): position(other.position), pItem(other.pItem), empty(other.empty) {
+    other.pItem.reset();
 }
 
 void Cell::clear() {
-    delete pItem;
+    pItem.reset();
     empty = true;
     pItem = nullptr;
 }
@@ -33,6 +33,6 @@ Cell &Cell::operator=(Cell other) {
 }
 
 std::ostream& operator<<(std::ostream& flux, const Cell& c){
-    c.getItem()!= nullptr ? flux << *c.getItem() : flux << '.';
+    !c.isEmpty()? flux << c.getItem() : flux << '.';
     return flux;
 }

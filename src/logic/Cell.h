@@ -9,23 +9,24 @@
 class Cell {
 private:
     Position position;
-    Item *pItem=new Candy{rand()%6};
+    std::shared_ptr<Item> pItem= std::make_shared<Candy>(rand()%6);
+    //Item *pItem=new Candy{rand()%6};
     bool empty= false;
     int frozen=0;
 public:
     //Constructeurs
     Cell(Position pos);
     Cell(const Cell &other); //copie
-    Cell(const Cell &&other); //deplacement
+    Cell(Cell &&other); //deplacement
 
     // getter / setters
-    Item *getItem()const{return pItem;}
-    void setItem(Item *new_item){pItem=new_item;}
+    Item getItem()const{return *pItem;}
+    //void setItem(Item* new_item){pItem = new_item;}
     Position getPosition()const{return position;}
     void setPosition(Position new_pos){position=new_pos;}
 
     // Méthodes
-    bool isEmpty()const{return empty;}
+    bool isEmpty()const{return pItem==nullptr;}
     void clear();
     void swap(Cell& other);
 

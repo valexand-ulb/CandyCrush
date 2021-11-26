@@ -4,7 +4,8 @@
 
 #ifndef CANDYCRUSH_POSITION_H
 #define CANDYCRUSH_POSITION_H
-
+#include <iostream>
+#include <memory>
 class Position {
 private:
     int x, y;

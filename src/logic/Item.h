@@ -5,7 +5,7 @@
 #ifndef CANDYCRUSH_ITEM_H
 #define CANDYCRUSH_ITEM_H
 #include "Position.h"
-#include <iostream>
+
 // classe abstraite
 class Item {
 protected:

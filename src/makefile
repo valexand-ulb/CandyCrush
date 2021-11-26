@@ -3,7 +3,7 @@ FLAGS=--std='c++20' -Wall -Wextra -Wpedantic -lfltk
 all:CandyCrush
 
 CandyCrush: main.o Matrice.o Cell.o Item.o Position.o
-	g++ main.o Matrice.o Cell.o Item.o Position.o -g -o CandyCrush
+	g++ main.o Matrice.o Cell.o Item.o Position.o -o CandyCrush
 
 Cell.o: logic/Cell.h logic/Cell.cpp
 	g++ $(FLAGS) -c logic/Cell.cpp -o Cell.o
