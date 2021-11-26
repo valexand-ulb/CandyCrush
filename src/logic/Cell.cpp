@@ -19,10 +19,10 @@ void Cell::clear() {
     pItem = nullptr;
 }
 
-void Cell::swap(Cell* other) {
+void Cell::swap(Cell& other) {
     Cell temp(*this);
-    *this=std::move(*other);
-    *other=std::move(temp);
+    *this=std::move(other);
+    other=std::move(temp);
 }
 
 Cell &Cell::operator=(Cell other) {

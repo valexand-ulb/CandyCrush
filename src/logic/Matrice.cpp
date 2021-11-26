@@ -18,9 +18,9 @@ void Matrice::clearCase(Position p) {
 
 
 void Matrice::swap(Position p1, Position p2) {
-    Cell* c1= getPCell(p1);
-    Cell* c2= getPCell(p2);
-    c1->swap(c2);
+    Cell& c1= mat[p1.getPosX()][p1.getPosY()];
+    Cell& c2= mat[p2.getPosX()][p2.getPosY()];
+    c1.swap(c2);
 }
 
 std::ostream& operator<<(ostream &flux,const Matrice& M) {
