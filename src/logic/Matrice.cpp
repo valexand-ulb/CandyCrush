@@ -6,7 +6,8 @@ Matrice::Matrice(int size):size(size){
     for (int i=0; i<size; i++){
         mat.push_back({});
         for (int j=0; j<size; j++){
-            mat[i].push_back(Cell{Position{i,j}});
+            Cell c{Position{i,j}};
+            mat[i].push_back(c);
         }
     }
 }

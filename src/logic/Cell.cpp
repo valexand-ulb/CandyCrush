@@ -6,7 +6,11 @@
 Cell::Cell(Position pos):position(pos){
 }
 
-Cell::Cell(const Cell &other): position(other.position), pItem(other.pItem) {
+Cell::Cell(const Cell &other): position(other.position), pItem(other.pItem), empty(other.empty) {
+}
+
+Cell::Cell(const Cell &&other): position(other.position), pItem(other.pItem), empty(other.empty) {
+    delete other.pItem;
 }
 
 void Cell::clear() {
@@ -16,9 +20,10 @@ void Cell::clear() {
 }
 
 void Cell::swap(Cell* other) {
-    //TODO
     Cell temp(*this);
-
+    *this=*other;
+    *other=temp;
+    /*
     position = other->position;
     pItem = other->pItem;
     empty = other->empty;
@@ -26,10 +31,17 @@ void Cell::swap(Cell* other) {
     other->position = temp.position;
     other->pItem = temp.pItem;
     other->empty = temp.empty;
+    */
+}
+
+Cell &Cell::operator=(Cell other) {
+    position=other.position;
+    pItem=other.pItem;
+    empty=other.empty;
+    return *this;
 }
 
 std::ostream& operator<<(std::ostream& flux, const Cell& c){
-    //std::cout << typeid(c.pItem).name() << std::endl;
     c.getItem()!= nullptr ? flux << *c.getItem() : flux << '.';
     return flux;
 }

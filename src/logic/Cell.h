@@ -16,6 +16,7 @@ public:
     //Constructeurs
     Cell(Position pos);
     Cell(const Cell &other); //copie
+    Cell(const Cell &&other); //deplacement
 
     // getter / setters
     Item *getItem()const{return pItem;}
@@ -30,6 +31,7 @@ public:
 
     // surcharge
     friend std::ostream& operator<<(std::ostream& flux, const Cell& c);
+    Cell &operator=(Cell other);
 };
 
 

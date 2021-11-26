@@ -6,7 +6,6 @@
 #define CANDYCRUSH_ITEM_H
 #include "Position.h"
 #include <iostream>
-
 // classe abstraite
 class Item {
 protected:
@@ -28,7 +27,7 @@ private:
 public:
     //constructeur
     Candy(int clr){color=clr;}
-    ~Candy(){std::cout<<"mort de candy"<<std::endl;}
+    ~Candy(){std::cout<<"mort de candy" << std::endl;}
 
 };
 
