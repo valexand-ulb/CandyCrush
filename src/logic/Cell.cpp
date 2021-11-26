@@ -21,17 +21,8 @@ void Cell::clear() {
 
 void Cell::swap(Cell* other) {
     Cell temp(*this);
-    *this=*other;
-    *other=temp;
-    /*
-    position = other->position;
-    pItem = other->pItem;
-    empty = other->empty;
-
-    other->position = temp.position;
-    other->pItem = temp.pItem;
-    other->empty = temp.empty;
-    */
+    *this=std::move(*other);
+    *other=std::move(temp);
 }
 
 Cell &Cell::operator=(Cell other) {
