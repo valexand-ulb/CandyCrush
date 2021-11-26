@@ -18,11 +18,12 @@ public:
     Matrice(int size);
     //getter setter:
     int getSize()const{return size;}
-    //méthodes
     Cell getCell(Position p)const{ return mat[p.getPosX()][p.getPosY()];}
-    Cell* getPCell(Position p){return &(mat[p.getPosX()][p.getPosY()]);}
+    void setCell(Position p){mat[p.getPosX()][p.getPosY()].setItem();}
+    //méthodes
     void clearCase(Position p);
-    void swap(Position p1, Position p2);
+    void swapCases(Position p1, Position p2);
+    void fillVoid();
     //surcharge
     friend std::ostream& operator<<(std::ostream& flux,const Matrice &m);
 };

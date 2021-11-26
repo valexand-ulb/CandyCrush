@@ -12,12 +12,19 @@ Matrice::Matrice(int size):size(size){
     }
 }
 
-void Matrice::clearCase(Position p) {
-    getPCell(p)->clear();
+void Matrice::fillVoid() {
+    for (int i = size - 1; i >= 0; i--)
+        for (int j = size - 1; j >= 0; j--)
+            if (mat[i][j].isEmpty()) {
+                i != 0 ? swapCases({i, j}, {i - 1, j}) : setCell({i, j});
+            }
 }
 
+void Matrice::clearCase(Position p) {
+    mat[p.getPosX()][p.getPosY()].clear();
+}
 
-void Matrice::swap(Position p1, Position p2) {
+void Matrice::swapCases(Position p1, Position p2) {
     Cell& c1= mat[p1.getPosX()][p1.getPosY()];
     Cell& c2= mat[p2.getPosX()][p2.getPosY()];
     c1.swap(c2);

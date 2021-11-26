@@ -21,6 +21,7 @@ public:
 
     // getter / setters
     Item getItem()const{return *pItem;}
+    void setItem(){pItem= std::make_shared<Candy>(rand()%6);}
     //void setItem(Item* new_item){pItem = new_item;}
     Position getPosition()const{return position;}
     void setPosition(Position new_pos){position=new_pos;}
