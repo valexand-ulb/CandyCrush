@@ -25,10 +25,18 @@ void Cell::swap(Cell& other) {
     other=std::move(temp);
 }
 
-Cell &Cell::operator=(Cell other) {
+Cell &Cell::operator=(const Cell& other) {
     position=other.position;
     pItem=other.pItem;
     empty=other.empty;
+    return *this;
+}
+
+Cell &Cell::operator=(Cell&& other) {
+    position=other.position;
+    pItem=other.pItem;
+    empty=other.empty;
+    other.pItem.reset();
     return *this;
 }
 

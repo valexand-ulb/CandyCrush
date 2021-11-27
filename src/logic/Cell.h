@@ -33,7 +33,8 @@ public:
 
     // surcharge
     friend std::ostream& operator<<(std::ostream& flux, const Cell& c);
-    Cell &operator=(Cell other);
+    Cell &operator=(const Cell &other);
+    Cell &operator=(Cell &&other);
 };
 
 

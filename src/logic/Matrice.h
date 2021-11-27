@@ -13,6 +13,7 @@ class Matrice {
 private:
     const int size;
     vector<vector<Cell>> mat;
+    vector<Position> emptyCells;
 public:
     //constructeurs
     Matrice(int size);
@@ -21,9 +22,11 @@ public:
     Cell getCell(Position p)const{ return mat[p.getPosX()][p.getPosY()];}
     void setCell(Position p){mat[p.getPosX()][p.getPosY()].setItem();}
     //méthodes
+    bool isCellEmpty(Position p);
     void clearCase(Position p);
     void swapCases(Position p1, Position p2);
     void fillVoid();
+    void updateEmptyCells();
     //surcharge
     friend std::ostream& operator<<(std::ostream& flux,const Matrice &m);
 };
