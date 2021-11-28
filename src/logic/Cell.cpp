@@ -3,7 +3,8 @@
 //
 
 #include "Cell.h"
-Cell::Cell(Position pos):position(pos){
+Cell::Cell(Position pos, int i):position(pos) {
+    if (i!=-1) pItem=std::make_shared<Candy>(i);
 }
 
 Cell::Cell(const Cell &other): position(other.position), pItem(other.pItem), empty(other.empty) {

@@ -15,7 +15,7 @@ private:
     int frozen=0;
 public:
     //Constructeurs
-    Cell(Position pos);
+    Cell(Position pos, int i=-1);
     Cell(const Cell &other); //copie
     Cell(Cell &&other); //deplacement
 
