@@ -17,6 +17,7 @@ private:
 public:
     //constructeurs
     Matrice(int size);
+    Matrice(std::string file_path);
     //getter setter:
     int getSize()const{return size;}
     Cell getCell(Position p)const{ return mat[p.getPosX()][p.getPosY()];}

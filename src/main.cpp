@@ -6,6 +6,7 @@
 
 
 int main(){
+    /*
     Matrice m{3};
 
     std::cout<< m << std::endl;
@@ -25,7 +26,11 @@ int main(){
     std::cout<< "Remplissage: " << std::endl;
     m.fillVoid();
     std::cout << m << std::endl;
-
+    m.clearCase({2,0});
+    m.fillVoid();
+    std::cout << m << std::endl;
+    */
+    Matrice m{"mat1.txt",3};
 
     return 0;
 }

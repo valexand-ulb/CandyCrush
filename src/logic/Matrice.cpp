@@ -2,6 +2,7 @@
 // Created by alex on 20/11/21.
 //
 #include "Matrice.h"
+//Constructeurs
 Matrice::Matrice(int size):size(size){
     for (int i=0; i<size; i++){
         mat.push_back({});
@@ -12,6 +13,23 @@ Matrice::Matrice(int size):size(size){
     }
 }
 
+Matrice::Matrice(std::string file_path, int size){
+    std::fstream my_file;
+    my_file.open(file_path,ios::in);
+    if (my_file.is_open()){
+        string line;
+        int i=0
+        while(getline(my_file,line)){
+            if (line.size()==1){
+                //TODO
+            }
+            //std::cout << line.size() << endl;
+            i+=1
+        }
+    }
+}
+
+//Méthodes
 bool Matrice::isCellEmpty(Position p) {
     return mat[p.getPosX()][p.getPosY()].isEmpty();
 }
@@ -55,9 +73,11 @@ void Matrice::fillVoid() {
         }else{
             setCell(p);
         }
+        std::cout << *this << std::endl;
     }
 }
 
+//Surcharge
 std::ostream& operator<<(ostream &flux,const Matrice& M) {
     for (int i=0; i<M.getSize(); i++){
         for (int j=0;j<M.getSize();j++){
