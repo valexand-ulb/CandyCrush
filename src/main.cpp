@@ -32,5 +32,7 @@ int main(int argc, char *argv[]){
     std::cout << m << std::endl;
 
     //Matrice m{"mat1.txt",3};
-    return 0;
+    MainWindow window;
+    window.show(argc, argv);
+    return Fl::run();
 }
