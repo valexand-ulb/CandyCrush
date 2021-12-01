@@ -5,6 +5,7 @@
 #ifndef CANDYCRUSH_CELL_H
 #define CANDYCRUSH_CELL_H
 #include "Item.h"
+#include "../gui/BasicShapes.h"
 
 class Cell {
 private:
@@ -21,7 +22,7 @@ public:
 
     // getter / setters
     Item getItem()const{return *pItem;}
-    void setItem(){pItem= std::make_shared<Candy>(rand()%6);}
+    void setItem(int clr=-1){clr==-1 ? pItem=std::make_shared<Candy>(rand()%6) : pItem=std::make_shared<Candy>(clr);}
     //void setItem(Item* new_item){pItem = new_item;}
     Position getPosition()const{return position;}
     void setPosition(Position new_pos){position=new_pos;}

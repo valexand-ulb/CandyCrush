@@ -2,8 +2,8 @@ FLAGS=--std='c++20' -Wall -Wextra -Wpedantic -lfltk
 
 all:CandyCrush
 
-CandyCrush: main.o Matrice.o Cell.o Item.o Position.o
-	g++ main.o Matrice.o Cell.o Item.o Position.o -o CandyCrush
+CandyCrush: main.o Matrice.o Cell.o Item.o Position.o BasicShape.o Functionable.o Mainwindow.o
+	g++ main.o Matrice.o Cell.o Item.o Position.o BasicShape.o Functionable.o Mainwindow.o -o CandyCrush
 
 Cell.o: logic/Cell.h logic/Cell.cpp
 	g++ $(FLAGS) -c logic/Cell.cpp -o Cell.o
@@ -13,6 +13,14 @@ Position.o: logic/Position.h logic/Position.cpp
 	g++ $(FLAGS) -c logic/Position.cpp -o Position.o
 Matrice.o: logic/Matrice.h logic/Matrice.cpp
 	g++ $(FLAGS) -c logic/Matrice.cpp -o Matrice.o
+
+BasicShape.o: gui/BasicShapes.h gui/BasicShapes.cpp
+	g++ $(FLAGS) -c gui/BasicShapes.cpp -o BasicShape.o
+Functionable.o: gui/Functionable.h gui/Functionable.cpp
+	g++ $(FLAGS) -c gui/Functionable.cpp -o Functionable.o
+Mainwindow.o: gui/Mainwindow.h gui/Mainwindow.cpp
+	g++ $(FLAGS) -c gui/Mainwindow.cpp -o Mainwindow.o
+
 main.o: main.cpp
 	g++ $(FLAGS) -c main.cpp -o main.o
 

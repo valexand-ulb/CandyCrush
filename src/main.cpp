@@ -3,10 +3,11 @@
 //
 
 #include "logic/Matrice.h"
+#include "gui/Mainwindow.h"
 
 
-int main(){
-    /*
+int main(int argc, char *argv[]){
+
     Matrice m{3};
 
     std::cout<< m << std::endl;
@@ -25,12 +26,11 @@ int main(){
     std::cout << m << std::endl;
     std::cout<< "Remplissage: " << std::endl;
     m.fillVoid();
-    std::cout << m << std::endl;
+    std::cout<< "Supression (2,0): " << std::endl;
     m.clearCase({2,0});
     m.fillVoid();
     std::cout << m << std::endl;
-    */
-    Matrice m{"mat1.txt",3};
 
+    //Matrice m{"mat1.txt",3};
     return 0;
 }

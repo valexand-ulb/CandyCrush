@@ -21,7 +21,7 @@ public:
     //getter setter:
     int getSize()const{return size;}
     Cell getCell(Position p)const{ return mat[p.getPosX()][p.getPosY()];}
-    void setCell(Position p){mat[p.getPosX()][p.getPosY()].setItem();}
+    void setCell(Position p, int color=-1){mat[p.getPosX()][p.getPosY()].setItem(color);}
     //méthodes
     bool isCellEmpty(Position p);
     void clearCase(Position p);

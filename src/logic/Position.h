@@ -8,6 +8,7 @@
 #include <fstream>
 #include <memory>
 #include <string>
+
 class Position {
 private:
     int x, y;

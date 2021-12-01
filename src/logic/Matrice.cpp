@@ -14,18 +14,23 @@ Matrice::Matrice(int size):size(size){
 }
 
 Matrice::Matrice(std::string file_path, int size): size(size){
-    std::fstream my_file;
-    my_file.open(file_path,ios::in);
-    if (my_file.is_open()){
-        string line;
+    std::fstream file;
+    file.open(file_path,ios::in);
+    if (file.is_open()){
+        std::string line;
         int i=0;
-        while(getline(my_file,line)){
-            mat.push_back({});
-            for(int j=0;j<size;j++){
+        while (getline(file, line)){
+            for (int j=0; j<size; j++){
+                if (line.c_str()){
+                    std::cout << "oui" << std::endl;
+                }
+
             }
-            i+=1;
         }
+        file.close();
+        i+=1;
     }
+
 }
 
 //Méthodes
