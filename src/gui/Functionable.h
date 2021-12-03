@@ -7,7 +7,8 @@
 
 
 class Sketchable {
-
+public:
+    virtual void draw()const=0;
 };
 
 class Clickable{

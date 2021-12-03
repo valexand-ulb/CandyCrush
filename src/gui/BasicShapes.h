@@ -16,26 +16,24 @@ struct Point{
     int x,y;
 };
 
-class BasicShape {
+class BasicShape{
 protected:
     Point center;
     Fl_Color frameColor=FL_BLACK, fillColor=FL_WHITE;
 public:
-    ~BasicShape();
-    void draw();
 };
 
-class Rectangle: public virtual BasicShape, public virtual Sketchable, public virtual Clickable{
+class Rectangle: public virtual BasicShape, public  virtual Sketchable{
     int w,h;
 public:
     Rectangle(Point center, int width, int height, Fl_Color frameColor=FL_BLACK, Fl_Color fillColor=FL_WHITE);
-    ~Rectangle();
+    void draw() const override;
 };
 
-class Circle:public virtual BasicShape, public virtual Sketchable{
-    int r;
+class Circle:public virtual BasicShape, public  virtual Sketchable{
+    int r,w,h;
 public:
     Circle(Point center, int rayon, Fl_Color frameColor=FL_BLACK, Fl_Color=FL_WHITE);
-    ~Circle();
+    void draw() const override;
 };
 #endif //CANDYCRUSH_BASICSHAPES_H
