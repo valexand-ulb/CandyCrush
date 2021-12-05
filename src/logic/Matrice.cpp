@@ -81,6 +81,14 @@ void Matrice::fillVoid() {
     }
 }
 
+void Matrice::draw() {
+    for (auto &l:mat){
+        for (auto &c:l){
+            c.draw();
+        }
+    }
+}
+
 //Surcharge
 std::ostream& operator<<(ostream &flux,const Matrice& M) {
     for (int i=0; i<M.getSize(); i++){

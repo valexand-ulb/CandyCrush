@@ -2,12 +2,12 @@
 // Created by alex on 20/11/21.
 //
 
-#include "logic/Matrice.h"
+//#include "logic/Matrice.h"
 #include "gui/Mainwindow.h"
 
 
 int main(int argc, char *argv[]){
-
+    /*
     Matrice m{3};
 
     std::cout<< m << std::endl;
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]){
     m.clearCase({2,0});
     m.fillVoid();
     std::cout << m << std::endl;
-
+    */
     //Matrice m{"mat1.txt",3};
     MainWindow window;
     window.show(argc, argv);

@@ -7,7 +7,7 @@
 #include "Item.h"
 #include "../gui/BasicShapes.h"
 
-class Cell {
+class Cell{
 private:
     Position position;
     std::shared_ptr<Item> pItem= std::make_shared<Candy>(rand()%6);
@@ -31,7 +31,7 @@ public:
     bool isEmpty()const{return pItem==nullptr;}
     void clear();
     void swap(Cell& other);
-
+    void draw();
     // surcharge
     friend std::ostream& operator<<(std::ostream& flux, const Cell& c);
     Cell &operator=(const Cell &other);

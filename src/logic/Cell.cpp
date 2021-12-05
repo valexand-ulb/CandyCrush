@@ -5,6 +5,7 @@
 #include "Cell.h"
 Cell::Cell(Position pos, int i):position(pos) {
     if (i!=-1) pItem=std::make_shared<Candy>(i);
+    //std::cout << p.x << ',' << p.y << std::endl;
 }
 
 Cell::Cell(const Cell &other): position(other.position), pItem(other.pItem), empty(other.empty) {
@@ -24,6 +25,9 @@ void Cell::swap(Cell& other) {
     Cell temp(*this);
     *this=std::move(other);
     other=std::move(temp);
+}
+
+void Cell::draw() {
 }
 
 Cell &Cell::operator=(const Cell& other) {

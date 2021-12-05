@@ -11,6 +11,7 @@
 #include <FL/Fl_Box.H>
 #include <math.h>
 #include <time.h>
+#include "../logic/Matrice.h"
 #include "BasicShapes.h"
 
 const int windowWidth = 500;
@@ -18,16 +19,14 @@ const int windowHeight = 500;
 const double refreshPerSecond = 60;
 
 class MainWindow : public Fl_Window {
-    Rectangle r{Point{50,50}, 50, 50, FL_BLACK, FL_BLUE};
+private:
+    RectangleAndCircle r{Point{50,50}, 50,50,25, FL_BLACK, FL_BLUE};
 public:
     MainWindow() : Fl_Window(000, 000, windowWidth, windowHeight, "CandyCrush") {
         Fl::add_timeout(1.0 / refreshPerSecond, Timer_CB, this);
         resizable(this);
     }
-    void draw() override {
-        Fl_Window::draw();
-        r.draw();
-    }
+    void draw() override;
     static void Timer_CB(void *userdata) {
         MainWindow *o = (MainWindow *)userdata;
         o->redraw();

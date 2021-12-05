@@ -3,3 +3,8 @@
 //
 
 #include "Mainwindow.h"
+
+void MainWindow::draw() {
+    Fl_Window::draw();
+    r.draw();
+}
