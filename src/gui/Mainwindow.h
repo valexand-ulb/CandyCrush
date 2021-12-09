@@ -11,6 +11,8 @@
 #include <FL/Fl_Box.H>
 #include <math.h>
 #include <time.h>
+#include <vector>
+#include <memory>
 #include "../logic/Matrice.h"
 #include "BasicShapes.h"
 
@@ -20,18 +22,12 @@ const double refreshPerSecond = 60;
 
 class MainWindow : public Fl_Window {
 private:
-    RectangleAndCircle r{Point{50,50}, 50,50,25, FL_BLACK, FL_BLUE};
+    std::shared_ptr<Matrice> mat;
+    std::vector<Circle> vect;
 public:
-    MainWindow() : Fl_Window(000, 000, windowWidth, windowHeight, "CandyCrush") {
-        Fl::add_timeout(1.0 / refreshPerSecond, Timer_CB, this);
-        resizable(this);
-    }
+    MainWindow(std::shared_ptr<Matrice>mat);
     void draw() override;
-    static void Timer_CB(void *userdata) {
-        MainWindow *o = (MainWindow *)userdata;
-        o->redraw();
-        Fl::repeat_timeout(1.0 / refreshPerSecond, Timer_CB, userdata);
-    }
+    static void Timer_CB(void *userdata);
 };
 
 #endif //CANDYCRUSH_MAINWINDOW_H

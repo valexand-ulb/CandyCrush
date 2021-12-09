@@ -32,7 +32,8 @@ int main(int argc, char *argv[]){
     std::cout << m << std::endl;
     */
     //Matrice m{"mat1.txt",3};
-    MainWindow window;
+    auto mat=std::make_shared<Matrice>(10);
+    MainWindow window{mat};
     window.show(argc, argv);
     return Fl::run();
 }

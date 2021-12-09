@@ -22,26 +22,23 @@ class BasicShape{
 protected:
     Point center;
     Fl_Color frameColor=FL_BLACK, fillColor=FL_WHITE;
+public:
+    virtual void setFillColor(Fl_Color new_col){fillColor=new_col;}
 };
 
 class Rectangle: public virtual BasicShape, public  virtual Sketchable{
     int w,h;
 public:
-    Rectangle(Point center, int width=50, int height=50, Fl_Color frameColor=FL_BLACK, Fl_Color fillColor=FL_WHITE);
+    Rectangle(Point center, int width=50, int height=50, Fl_Color fillColor=FL_WHITE, Fl_Color frameColor=FL_BLACK);
     void setPoint(Point new_p){center=new_p;}
-    void draw() const override;
+    virtual void draw() const override;
 };
 
 class Circle:public virtual BasicShape, public  virtual Sketchable{
     int r;
 public:
-    Circle(Point center, int rayon=50, Fl_Color frameColor=FL_BLACK, Fl_Color fillColor=FL_WHITE);
-    void draw() const override;
-};
-
-class RectangleAndCircle: public virtual Rectangle, public virtual Circle{
-public:
-    RectangleAndCircle(Point center, int width, int height, int r, Fl_Color CframeColor, Fl_Color CfillColor,Fl_Color RframeColor=FL_BLACK, Fl_Color RfillColor=FL_WHITE);
-    void draw() const override;
+    Circle(Point center, Fl_Color fillColor, int rayon=22, Fl_Color frameColor=FL_BLACK);
+    Circle(Point center, int fillColor, int rayon=22, Fl_Color frameColor=FL_BLACK);
+    virtual void draw() const override;
 };
 #endif //CANDYCRUSH_BASICSHAPES_H

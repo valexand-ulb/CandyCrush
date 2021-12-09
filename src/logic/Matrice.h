@@ -7,13 +7,12 @@
 # include <vector>
 #include "Cell.h"
 #include "Position.h"
-using namespace std;
 
 class Matrice {
 private:
     const int size;
-    vector<vector<Cell>> mat;
-    vector<Position> emptyCells;
+    std::vector<std::vector<Cell>> mat;
+    std::vector<Position> emptyCells;
 public:
     //constructeurs
     Matrice(int size);
@@ -22,13 +21,13 @@ public:
     int getSize()const{return size;}
     Cell getCell(Position p)const{ return mat[p.getPosX()][p.getPosY()];}
     void setCell(Position p, int color=-1){mat[p.getPosX()][p.getPosY()].setItem(color);}
+    int getCellColor(Position p)const{return mat[p.getPosX()][p.getPosY()].getCandyColor();}
     //méthodes
     bool isCellEmpty(Position p);
     void clearCase(Position p);
     void swapCases(Position p1, Position p2);
     void fillVoid();
     void updateEmptyCells();
-    void draw();
     //surcharge
     friend std::ostream& operator<<(std::ostream& flux,const Matrice &m);
 };

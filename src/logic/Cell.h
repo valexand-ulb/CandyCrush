@@ -24,6 +24,7 @@ public:
     Item getItem()const{return *pItem;}
     void setItem(int clr=-1){clr==-1 ? pItem=std::make_shared<Candy>(rand()%6) : pItem=std::make_shared<Candy>(clr);}
     //void setItem(Item* new_item){pItem = new_item;}
+    int getCandyColor()const{return pItem->getColor();}
     Position getPosition()const{return position;}
     void setPosition(Position new_pos){position=new_pos;}
 

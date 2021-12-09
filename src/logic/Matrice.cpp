@@ -15,7 +15,7 @@ Matrice::Matrice(int size):size(size){
 
 Matrice::Matrice(std::string file_path, int size): size(size){
     std::fstream file;
-    file.open(file_path,ios::in);
+    file.open(file_path,std::ios::in);
     if (file.is_open()){
         std::string line;
         int i=0;
@@ -81,21 +81,13 @@ void Matrice::fillVoid() {
     }
 }
 
-void Matrice::draw() {
-    for (auto &l:mat){
-        for (auto &c:l){
-            c.draw();
-        }
-    }
-}
-
 //Surcharge
-std::ostream& operator<<(ostream &flux,const Matrice& M) {
+std::ostream& operator<<(std::ostream &flux,const Matrice& M) {
     for (int i=0; i<M.getSize(); i++){
         for (int j=0;j<M.getSize();j++){
             flux << M.getCell(Position{i,j})<< ' ';
         }
-        flux << endl;
+        flux << std::endl;
     }
     return flux;
 }
