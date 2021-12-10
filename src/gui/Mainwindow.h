@@ -23,7 +23,7 @@ const double refreshPerSecond = 60;
 class MainWindow : public Fl_Window {
 private:
     std::shared_ptr<Matrice> mat;
-    std::vector<Circle> vect;
+    std::vector<std::shared_ptr<BasicShape>> vect;
 public:
     MainWindow(std::shared_ptr<Matrice>mat);
     void draw() override;

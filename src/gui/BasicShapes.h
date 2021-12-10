@@ -18,15 +18,16 @@ struct Point{
     int x,y;
 };
 
-class BasicShape{
+class BasicShape:public virtual Sketchable{
 protected:
     Point center;
     Fl_Color frameColor=FL_BLACK, fillColor=FL_WHITE;
 public:
     virtual void setFillColor(Fl_Color new_col){fillColor=new_col;}
+    void draw() const=0;
 };
 
-class Rectangle: public virtual BasicShape, public  virtual Sketchable{
+class Rectangle: public virtual BasicShape{
     int w,h;
 public:
     Rectangle(Point center, int width=50, int height=50, Fl_Color fillColor=FL_WHITE, Fl_Color frameColor=FL_BLACK);
@@ -34,7 +35,7 @@ public:
     virtual void draw() const override;
 };
 
-class Circle:public virtual BasicShape, public  virtual Sketchable{
+class Circle:public virtual BasicShape{
     int r;
 public:
     Circle(Point center, Fl_Color fillColor, int rayon=22, Fl_Color frameColor=FL_BLACK);

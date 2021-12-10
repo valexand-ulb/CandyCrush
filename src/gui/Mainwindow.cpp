@@ -11,7 +11,9 @@ Fl_Window(000, 000, windowWidth, windowHeight, "CandyCrush"), mat(mat) {
     int size = mat->getSize();
     for (int i=0; i< size; i++){
         for(int j=0; j<size; j++){
-            vect.push_back(Circle{{50*(i+1),50*(j+1)},mat->getCellColor({i,j})});
+            // inversion i-j x-y pour correspondre a la matrice
+            vect.push_back(std::make_shared<Rectangle>(Point{(j+1)*50,(i+1)*50}));
+            vect.push_back(std::make_shared<Circle>(Point{(j+1)*50,(i+1)*50},mat->getCellColor({i,j})));
         }
     }
 }
@@ -19,7 +21,7 @@ Fl_Window(000, 000, windowWidth, windowHeight, "CandyCrush"), mat(mat) {
 void MainWindow::draw() {
     Fl_Window::draw();
     for (auto &c:vect){
-        c.draw();
+        c->draw();
     }
 }
 

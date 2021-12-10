@@ -31,17 +31,23 @@ Circle::Circle(Point center, int fillColor, int rayon, Fl_Color frameColor):r(ra
     this->frameColor=frameColor;
     switch (fillColor) {
         case 0:
-            this->fillColor= FL_RED;
+            this->fillColor= FL_RED; //rouge
+            break;
         case 1:
-            this->fillColor= FL_GREEN;
+            //this->fillColor= fl_rgb_color(255,128,0); // orange
+            break;
         case 2:
-            this->fillColor= FL_BLUE;
+            //this->fillColor= fl_rgb_color(255,255,0); // Jaune
+            break;
         case 3:
-            this->fillColor= FL_YELLOW;
+            //this->fillColor= fl_rgb_color(128,255,0); //vert
+            break;
         case 4:
-            this->fillColor= FL_CYAN;
+            //this->fillColor= fl_rgb_color(0,128,128); //bleu
+            break;
         case 5:
-            this->fillColor= FL_BLACK;
+            //this->fillColor= fl_rgb_color(128,0,255);
+            break;
     }
     this->fillColor=fillColor;
 }
