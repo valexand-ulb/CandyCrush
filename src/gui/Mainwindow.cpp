@@ -5,24 +5,23 @@
 #include "Mainwindow.h"
 
 MainWindow::MainWindow(std::shared_ptr <Matrice> mat):
-Fl_Window(000, 000, windowWidth, windowHeight, "CandyCrush"), mat(mat) {
+Fl_Window(000, 000, windowWidth, windowHeight, "CandyCrush"), canvas(Canvas{mat}){
     Fl::add_timeout(1.0 / refreshPerSecond, Timer_CB, this);
     resizable(this);
-    int size = mat->getSize();
-    for (int i=0; i< size; i++){
-        for(int j=0; j<size; j++){
-            // inversion i-j x-y pour correspondre a la matrice
-            vect.push_back(std::make_shared<Rectangle>(Point{(j+1)*50,(i+1)*50}));
-            vect.push_back(std::make_shared<Circle>(Point{(j+1)*50,(i+1)*50},mat->getCellColor({i,j})));
-        }
-    }
 }
 
 void MainWindow::draw() {
     Fl_Window::draw();
-    for (auto &c:vect){
-        c->draw();
+    canvas.draw();
+}
+
+int MainWindow::handle(int event) {
+    switch (event) {
+        case FL_PUSH:
+            canvas.mouseClick(Point{Fl::event_x(), Fl::event_y()});
+            return 1;
     }
+    return 0;
 }
 
 void MainWindow::Timer_CB(void *userdata) {

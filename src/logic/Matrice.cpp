@@ -20,15 +20,11 @@ Matrice::Matrice(std::string file_path, int size): size(size){
         std::string line;
         int i=0;
         while (getline(file, line)){
-            for (int j=0; j<size; j++){
-                if (line.c_str()){
-                    std::cout << "oui" << std::endl;
-                }
-
-            }
+           std::cout << line << std::endl;
+           std::cout << i << std::endl;
+            i+=1;
         }
         file.close();
-        i+=1;
     }
 
 }

@@ -13,10 +13,7 @@
 #include <FL/Fl_Box.H>
 
 #include "Functionable.h"
-
-struct Point{
-    int x,y;
-};
+#include "Point.h"
 
 class BasicShape:public virtual Sketchable{
 protected:
@@ -27,12 +24,14 @@ public:
     void draw() const=0;
 };
 
-class Rectangle: public virtual BasicShape{
+class Rectangle: public virtual BasicShape, public virtual Clickable{
     int w,h;
 public:
     Rectangle(Point center, int width=50, int height=50, Fl_Color fillColor=FL_WHITE, Fl_Color frameColor=FL_BLACK);
     void setPoint(Point new_p){center=new_p;}
-    virtual void draw() const override;
+    void draw() const override;
+    void onClick() override;
+    bool contains(Point p) const override;
 };
 
 class Circle:public virtual BasicShape{
@@ -40,6 +39,6 @@ class Circle:public virtual BasicShape{
 public:
     Circle(Point center, Fl_Color fillColor, int rayon=22, Fl_Color frameColor=FL_BLACK);
     Circle(Point center, int fillColor, int rayon=22, Fl_Color frameColor=FL_BLACK);
-    virtual void draw() const override;
+    void draw() const override;
 };
 #endif //CANDYCRUSH_BASICSHAPES_H

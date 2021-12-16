@@ -14,7 +14,8 @@
 #include <vector>
 #include <memory>
 #include "../logic/Matrice.h"
-#include "BasicShapes.h"
+#include "Canvas.h"
+
 
 const int windowWidth = 500;
 const int windowHeight = 500;
@@ -22,11 +23,11 @@ const double refreshPerSecond = 60;
 
 class MainWindow : public Fl_Window {
 private:
-    std::shared_ptr<Matrice> mat;
-    std::vector<std::shared_ptr<BasicShape>> vect;
+    Canvas canvas;
 public:
     MainWindow(std::shared_ptr<Matrice>mat);
-    void draw() override;
+    void draw();
+    int handle(int event) override;
     static void Timer_CB(void *userdata);
 };
 

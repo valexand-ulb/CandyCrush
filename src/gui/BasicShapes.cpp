@@ -5,7 +5,9 @@
 #include "BasicShapes.h"
 
 
-
+/*
+ Rectangle class
+ */
 Rectangle::Rectangle(Point center, int width, int height, Fl_Color fillColor,Fl_Color frameColor)
     :w(width),h(height){
     this->center=center;
@@ -20,6 +22,21 @@ void Rectangle::draw() const {
     fl_end_polygon();
 }
 
+void Rectangle::onClick() {
+    std::cout << center.x << ',' << center.y << std::endl;
+}
+
+bool Rectangle::contains(Point p) const {
+    return p.x>=center.x-w/2 &&
+        p.x<center.x+w/2 &&
+        p.y>=center.y-h/2 &&
+        p.y<center.y+h/2;
+}
+
+/*
+ Circle class
+ */
+
 Circle::Circle(Point center, Fl_Color fillColor, int rayon, Fl_Color frameColor)
     :r(rayon){
     this->center=center;
@@ -31,25 +48,24 @@ Circle::Circle(Point center, int fillColor, int rayon, Fl_Color frameColor):r(ra
     this->frameColor=frameColor;
     switch (fillColor) {
         case 0:
-            this->fillColor= FL_RED; //rouge
+            this->fillColor= fl_rgb_color(255,0,0); //rouge
             break;
         case 1:
-            //this->fillColor= fl_rgb_color(255,128,0); // orange
+            this->fillColor= fl_rgb_color(255,128,0); // orange
             break;
         case 2:
-            //this->fillColor= fl_rgb_color(255,255,0); // Jaune
+            this->fillColor= fl_rgb_color(255,255,0); // Jaune
             break;
         case 3:
-            //this->fillColor= fl_rgb_color(128,255,0); //vert
+            this->fillColor= fl_rgb_color(128,255,0); //vert
             break;
         case 4:
-            //this->fillColor= fl_rgb_color(0,128,128); //bleu
+            this->fillColor= fl_rgb_color(0,128,128); //bleu
             break;
         case 5:
-            //this->fillColor= fl_rgb_color(128,0,255);
+            this->fillColor= fl_rgb_color(128,0,255);
             break;
     }
-    this->fillColor=fillColor;
 }
 
 void Circle::draw() const {
