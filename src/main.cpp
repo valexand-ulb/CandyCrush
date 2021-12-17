@@ -35,7 +35,6 @@ int main(int argc, char *argv[]){
     std::cout << *mat << std::endl;
     MainWindow window{mat};
     window.show(argc, argv);
-    mat->clearCase({0,0});
     return Fl::run();
 
 }

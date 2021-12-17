@@ -77,6 +77,17 @@ void Matrice::fillVoid() {
     }
 }
 
+void Matrice::updateOnClick(Position p1) {
+    std::cout << p1.getPosX() << ',' << p1.getPosY() << std::endl;
+    if (p1.getPosX() != -1) { // si la cellule est sur le tableau
+        std::cout << isCellEmpty(p1) << std::endl;
+        if (!isCellEmpty(p1)){
+            clearCase(p1);
+        }
+    }
+    std::cout << *this << std::endl;
+}
+
 //Surcharge
 std::ostream& operator<<(std::ostream &flux,const Matrice& M) {
     for (int i=0; i<M.getSize(); i++){

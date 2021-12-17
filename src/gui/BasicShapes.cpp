@@ -23,13 +23,13 @@ void Rectangle::draw() const {
 }
 
 void Rectangle::onClick() {
-    std::cout << center.x << ',' << center.y << std::endl;
+    std::cout << center.x/50 -1 << ',' << center.y/50 -1 << std::endl;
 }
 
 bool Rectangle::contains(Point p) const {
-    return p.x>=center.x-w/2 &&
+    return p.x>center.x-w/2 &&
         p.x<center.x+w/2 &&
-        p.y>=center.y-h/2 &&
+        p.y>center.y-h/2 &&
         p.y<center.y+h/2;
 }
 

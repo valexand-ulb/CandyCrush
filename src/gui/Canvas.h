@@ -9,16 +9,13 @@
 
 class Canvas {
 private:
+    Position p1, p2;
     std::vector<std::shared_ptr<BasicShape>> vect;
 public:
     Canvas(std::shared_ptr<Matrice> mat);
+    void update(std::shared_ptr<Matrice> mat);
     void draw();
-    void mouseClick(Point mouseLoc){
-        for (auto &c:vect){
-            auto x= std::dynamic_pointer_cast<Clickable>(c);
-            if (x && x->contains(mouseLoc)) x->onClick();
-        }
-    }
+    Position mouseClick(Point mouseLoc);
 
 };
 

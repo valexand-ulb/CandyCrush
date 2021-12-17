@@ -28,6 +28,7 @@ public:
     void swapCases(Position p1, Position p2);
     void fillVoid();
     void updateEmptyCells();
+    void updateOnClick(Position p1);
     //surcharge
     friend std::ostream& operator<<(std::ostream& flux,const Matrice &m);
 };

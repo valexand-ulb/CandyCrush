@@ -23,10 +23,12 @@ const double refreshPerSecond = 60;
 
 class MainWindow : public Fl_Window {
 private:
+    std::shared_ptr<Matrice> mat;
     Canvas canvas;
 public:
-    MainWindow(std::shared_ptr<Matrice>mat);
-    void draw();
+    MainWindow(std::shared_ptr<Matrice> mat);
+    void draw() override;
+    void updateCanva(){canvas.update(mat);};
     int handle(int event) override;
     static void Timer_CB(void *userdata);
 };

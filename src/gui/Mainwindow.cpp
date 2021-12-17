@@ -5,7 +5,7 @@
 #include "Mainwindow.h"
 
 MainWindow::MainWindow(std::shared_ptr <Matrice> mat):
-Fl_Window(000, 000, windowWidth, windowHeight, "CandyCrush"), canvas(Canvas{mat}){
+Fl_Window(000, 000, windowWidth, windowHeight, "CandyCrush"), mat(mat), canvas(Canvas{mat}){
     Fl::add_timeout(1.0 / refreshPerSecond, Timer_CB, this);
     resizable(this);
 }
@@ -18,7 +18,8 @@ void MainWindow::draw() {
 int MainWindow::handle(int event) {
     switch (event) {
         case FL_PUSH:
-            canvas.mouseClick(Point{Fl::event_x(), Fl::event_y()});
+            mat->updateOnClick(canvas.mouseClick(Point{Fl::event_x(), Fl::event_y()}));
+            updateCanva();
             return 1;
     }
     return 0;

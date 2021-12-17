@@ -21,13 +21,14 @@ protected:
     Fl_Color frameColor=FL_BLACK, fillColor=FL_WHITE;
 public:
     virtual void setFillColor(Fl_Color new_col){fillColor=new_col;}
+    virtual Point getCenter()const{return center;}
     void draw() const=0;
 };
 
 class Rectangle: public virtual BasicShape, public virtual Clickable{
     int w,h;
 public:
-    Rectangle(Point center, int width=50, int height=50, Fl_Color fillColor=FL_WHITE, Fl_Color frameColor=FL_BLACK);
+    Rectangle(Point center, int width=50, int height=50, Fl_Color fillColor=FL_WHITE, Fl_Color frameColor=FL_WHITE);
     void setPoint(Point new_p){center=new_p;}
     void draw() const override;
     void onClick() override;
