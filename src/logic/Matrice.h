@@ -11,6 +11,7 @@
 class Matrice {
 private:
     const int size;
+    Position click1,click2;
     std::vector<std::vector<Cell>> mat;
     std::vector<Position> emptyCells;
 public:

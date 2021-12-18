@@ -78,14 +78,18 @@ void Matrice::fillVoid() {
 }
 
 void Matrice::updateOnClick(Position p1) {
-    std::cout << p1.getPosX() << ',' << p1.getPosY() << std::endl;
     if (p1.getPosX() != -1) { // si la cellule est sur le tableau
-        std::cout << isCellEmpty(p1) << std::endl;
-        if (!isCellEmpty(p1)){
-            clearCase(p1);
-        }
+        click1.getPosX()<0 ? click1=p1 : click2=p1;
     }
-    std::cout << *this << std::endl;
+    if (!(click1.getPosX()<0 or click2.getPosX()<0)){
+        std::cout << click1.getPosX() << ',' << click1.getPosY() << std::endl;
+        std::cout << click2.getPosX() << ',' << click2.getPosY() << std::endl;
+        if (click1 != click2) swapCases(click1, click2);
+        //reset les position
+        click1.setPos(-1,-1);
+        click2.setPos(-1,-1);
+        std::cout << *this << std::endl;
+    }
 }
 
 //Surcharge

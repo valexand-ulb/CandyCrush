@@ -17,6 +17,7 @@ public:
     int getPosX()const{return x;}
     int getPosY()const{return y;}
     void setPos(int new_x, int new_y){ x=new_x;y=new_y;}
+    bool operator==(Position other){return x==other.x && y==other.y;}
     //surcharge
 };
 
