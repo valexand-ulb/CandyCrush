@@ -23,7 +23,6 @@ void Rectangle::draw() const {
 }
 
 void Rectangle::onClick() {
-    std::cout << center.x/50 -1 << ',' << center.y/50 -1 << std::endl;
 }
 
 bool Rectangle::contains(Point p) const {

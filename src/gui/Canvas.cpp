@@ -23,6 +23,8 @@ Canvas::Canvas(std::shared_ptr <Matrice> mat) {
 }
 
 void Canvas::update(std::shared_ptr <Matrice> mat) {
+    vect.clear();
+    std::cout << vect.size() << std::endl;
     int size = mat->getSize();
     for (int i=0; i< size; i++){
         for(int j=0; j<size; j++){
@@ -30,8 +32,6 @@ void Canvas::update(std::shared_ptr <Matrice> mat) {
             vect.push_back(std::make_shared<Rectangle>(Point{(j+1)*50,(i+1)*50}));
             if (!mat->isCellEmpty({i,j})) {
                 vect.push_back(std::make_shared<Circle>(Point{(j+1)*50,(i+1)*50},mat->getCellColor({i, j})));
-            }else{
-                std::cout << i << ',' << j << std::endl;
             }
         }
     }
