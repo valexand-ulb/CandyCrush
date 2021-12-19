@@ -20,8 +20,8 @@ public:
     Matrice(std::string file_path, int size);
     //getter setter:
     int getSize()const{return size;}
-    Cell getCell(Position p)const{ return mat[p.getPosX()][p.getPosY()];}
-    void setCell(Position p, int color=-1){mat[p.getPosX()][p.getPosY()].setItem(color);}
+    Cell getCell(Position p)const{ return mat[p.x][p.y];}
+    void setCell(Position p, int color=-1){mat[p.x][p.y].setItem(color);}
     int getCellColor(Position p)const;
     //méthodes
     bool isCellEmpty(Position p);

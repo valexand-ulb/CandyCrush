@@ -28,19 +28,19 @@ Matrice::Matrice(std::string file_path, int size): size(size){
 }
 
 int Matrice::getCellColor(Position p) const {
-    return (0<= p.getPosX() && p.getPosX() < size && 0<= p.getPosY() && p.getPosY() < size) ?
-    mat[p.getPosX()][p.getPosY()].getCandyColor() : -1;
+    return (0<= p.x && p.x < size && 0<= p.y && p.y < size) ?
+    mat[p.x][p.y].getCandyColor() : -1;
 }
 //Méthodes
 bool Matrice::isCellEmpty(Position p) {
-    return mat[p.getPosX()][p.getPosY()].isEmpty();
+    return mat[p.x][p.y].isEmpty();
 }
 
 bool Matrice::isAdjacent(Position p1, Position p2){
-    return Position{p1.getPosX()+1, p1.getPosY()} == p2
-        || Position{p1.getPosX()-1, p1.getPosY()} == p2
-        || Position{p1.getPosX(), p1.getPosY()+1} == p2
-        || Position{p1.getPosX(), p1.getPosY()-1} == p2;
+    return Position{p1.x+1, p1.y} == p2
+        || Position{p1.x-1, p1.y} == p2
+        || Position{p1.x, p1.y+1} == p2
+        || Position{p1.x, p1.y-1} == p2;
 }
 
 bool Matrice::isSideSwapable(Position p1, Position p2) {
@@ -48,15 +48,15 @@ bool Matrice::isSideSwapable(Position p1, Position p2) {
 }
 
 void Matrice::clearCase(Position p) {
-    mat[p.getPosX()][p.getPosY()].clear();
+    mat[p.x][p.y].clear();
     emptyCells.push_back(p);
     fillVoid();
 }
 
 void Matrice::swapCases(Position p1, Position p2) {
     // echange le contenu des cases en p1 et p2
-    Cell& c1= mat[p1.getPosX()][p1.getPosY()];
-    Cell& c2= mat[p2.getPosX()][p2.getPosY()];
+    Cell& c1= mat[p1.x][p1.y];
+    Cell& c2= mat[p2.x][p2.y];
     if (!c1.isEmpty() && !c2.isEmpty()){
         c1.swap(c2); // si les deux cellules sont pas vide, échange les sans mettre a jour emptyCells
     }else if(c1.isEmpty() && !c2.isEmpty()){
@@ -82,8 +82,8 @@ void Matrice::fillVoid() {
     while (!emptyCells.empty()){
         p = emptyCells.back();
         emptyCells.pop_back();
-        if (p.getPosX() !=0){
-            swapCases(p, {p.getPosX()-1, p.getPosY()});
+        if (p.x !=0){
+            swapCases(p, {p.x-1, p.y});
         }else{
             setCell(p);
         }
@@ -92,10 +92,10 @@ void Matrice::fillVoid() {
 }
 
 void Matrice::updateOnClick(Position p1) {
-    if (p1.getPosX() != -1) { // si la cellule est sur le tableau
-        click1.getPosX()<0 ? click1=p1 : click2=p1;
+    if (p1.x != -1) { // si la cellule est sur le tableau
+        click1.x<0 ? click1=p1 : click2=p1;
     }
-    if (!(click1.getPosX()<0 or click2.getPosX()<0)){
+    if (!(click1.x<0 or click2.x<0)){
         if (isAdjacent(click1, click2)) swapCases(click1, click2);
         //reset les position
         click1.setPos(-1,-1);

@@ -9,16 +9,13 @@
 #include <memory>
 #include <string>
 
-class Position {
-private:
+struct Position {
     int x, y;
-public:
     Position(int x=-1, int y=-1):x(x),y(y){}
-    int getPosX()const{return x;}
-    int getPosY()const{return y;}
     void setPos(int new_x, int new_y){ x=new_x;y=new_y;}
-    bool operator==(Position other){return x==other.x && y==other.y;}
+
     //surcharge
+    bool operator==(Position other){return x==other.x && y==other.y;}
 };
 
 
