@@ -24,7 +24,6 @@ Canvas::Canvas(std::shared_ptr <Matrice> mat) {
 
 void Canvas::update(std::shared_ptr <Matrice> mat) {
     vect.clear();
-    std::cout << vect.size() << std::endl;
     int size = mat->getSize();
     for (int i=0; i< size; i++){
         for(int j=0; j<size; j++){
@@ -45,7 +44,7 @@ void Canvas::draw() {
 
 Position Canvas::mouseClick(Point mouseLoc) {
     for (auto &c:vect){
-        auto x= std::dynamic_pointer_cast<Clickable>(c);
+        auto x= std::dynamic_pointer_cast<Rectangle>(c);
         if (x && x->contains(mouseLoc)) {
             x->onClick();
             return Position{(c->getCenter().y/50)-1, (c->getCenter().x/50)-1};

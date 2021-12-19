@@ -21,6 +21,7 @@ protected:
     Fl_Color frameColor=FL_BLACK, fillColor=FL_WHITE;
 public:
     virtual void setFillColor(Fl_Color new_col){fillColor=new_col;}
+    virtual void setFrameColor(Fl_Color new_col){frameColor=new_col;}
     virtual Point getCenter()const{return center;}
     void draw() const=0;
 };

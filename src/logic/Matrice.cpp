@@ -20,8 +20,6 @@ Matrice::Matrice(std::string file_path, int size): size(size){
         std::string line;
         int i=0;
         while (getline(file, line)){
-           std::cout << line << std::endl;
-           std::cout << i << std::endl;
             i+=1;
         }
         file.close();
@@ -29,14 +27,30 @@ Matrice::Matrice(std::string file_path, int size): size(size){
 
 }
 
+int Matrice::getCellColor(Position p) const {
+    return (0<= p.getPosX() && p.getPosX() < size && 0<= p.getPosY() && p.getPosY() < size) ?
+    mat[p.getPosX()][p.getPosY()].getCandyColor() : -1;
+}
 //Méthodes
 bool Matrice::isCellEmpty(Position p) {
     return mat[p.getPosX()][p.getPosY()].isEmpty();
 }
 
+bool Matrice::isAdjacent(Position p1, Position p2){
+    return Position{p1.getPosX()+1, p1.getPosY()} == p2
+        || Position{p1.getPosX()-1, p1.getPosY()} == p2
+        || Position{p1.getPosX(), p1.getPosY()+1} == p2
+        || Position{p1.getPosX(), p1.getPosY()-1} == p2;
+}
+
+bool Matrice::isSideSwapable(Position p1, Position p2) {
+    return 1;
+}
+
 void Matrice::clearCase(Position p) {
     mat[p.getPosX()][p.getPosY()].clear();
     emptyCells.push_back(p);
+    fillVoid();
 }
 
 void Matrice::swapCases(Position p1, Position p2) {
@@ -82,9 +96,7 @@ void Matrice::updateOnClick(Position p1) {
         click1.getPosX()<0 ? click1=p1 : click2=p1;
     }
     if (!(click1.getPosX()<0 or click2.getPosX()<0)){
-        std::cout << click1.getPosX() << ',' << click1.getPosY() << std::endl;
-        std::cout << click2.getPosX() << ',' << click2.getPosY() << std::endl;
-        if (click1 != click2) swapCases(click1, click2);
+        if (isAdjacent(click1, click2)) swapCases(click1, click2);
         //reset les position
         click1.setPos(-1,-1);
         click2.setPos(-1,-1);
@@ -102,4 +114,3 @@ std::ostream& operator<<(std::ostream &flux,const Matrice& M) {
     }
     return flux;
 }
-
