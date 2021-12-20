@@ -44,7 +44,15 @@ bool Matrice::isAdjacent(Position p1, Position p2){
 }
 
 bool Matrice::isSideSwapable(Position p1, Position p2) {
-    return 1;
+    // pour click1
+    return (getCellColor(p1) == getCellColor({p1.x, p1.y+2}) && getCellColor(p1) == getCellColor({p1.x, p1.y+3}))
+    || (getCellColor(p1) == getCellColor({p1.x-1, p1.y+1}) && getCellColor(p1) == getCellColor({p1.x-2, p1.y+1}))
+    || (getCellColor(p1) == getCellColor({p1.x+1, p1.y+1}) && getCellColor(p1) == getCellColor({p1.x+2, p1.y+1}))
+    // pour click2
+    || (getCellColor(p2) == getCellColor({p1.x, p1.y-1}) && getCellColor(p2) == getCellColor({p1.x, p1.y-2}))
+    || (getCellColor(p2) == getCellColor({p1.x-1, p1.y}) && getCellColor(p2) == getCellColor({p1.x-2, p1.y}))
+    || (getCellColor(p2) == getCellColor({p1.x+1, p1.y}) && getCellColor(p2) == getCellColor({p1.x+2, p1.y}));
+
 }
 
 void Matrice::clearCase(Position p) {
@@ -96,7 +104,7 @@ void Matrice::updateOnClick(Position p1) {
         click1.x<0 ? click1=p1 : click2=p1;
     }
     if (!(click1.x<0 or click2.x<0)){
-        if (isAdjacent(click1, click2)) swapCases(click1, click2);
+        if (isAdjacent(click1, click2)&&isSideSwapable(click1, click2))swapCases(click1, click2);
         //reset les position
         click1.setPos(-1,-1);
         click2.setPos(-1,-1);

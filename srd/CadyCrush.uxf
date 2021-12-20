@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>7</zoom_level>
+  <zoom_level>4</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>357</x>
-      <y>364</y>
-      <w>147</w>
-      <h>133</h>
+      <x>136</x>
+      <y>252</y>
+      <w>84</w>
+      <h>76</h>
     </coordinates>
     <panel_attributes>/Item/
 --
@@ -23,10 +23,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>609</y>
-      <w>98</w>
-      <h>63</h>
+      <x>208</x>
+      <y>392</y>
+      <w>56</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Item::Candy
 --
@@ -39,10 +39,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>252</x>
-      <y>609</y>
-      <w>91</w>
-      <h>56</h>
+      <x>72</x>
+      <y>392</y>
+      <w>52</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>Item::PowerUp
 --
@@ -53,10 +53,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>364</x>
-      <y>609</y>
-      <w>105</w>
-      <h>56</h>
+      <x>136</x>
+      <y>392</y>
+      <w>60</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>Item::Frosting
 --
@@ -68,10 +68,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>665</x>
-      <y>357</y>
-      <w>147</w>
-      <h>210</h>
+      <x>296</x>
+      <y>248</y>
+      <w>84</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>Cell
 --
@@ -86,6 +86,7 @@
 
 +getItem()const:Item*
 +setItem():void
++getCandyColor()const:int
 +getPosition()const:Position
 +setPosition(Position):void
 
@@ -98,84 +99,87 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>973</x>
-      <y>357</y>
-      <w>168</w>
-      <h>203</h>
+      <x>456</x>
+      <y>248</y>
+      <w>124</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>Matrice
 --
 -size: int
 -mat:vector&lt;vector&lt;cell&gt; &gt;
 -emptyCells: vector&lt;Position&gt;
+-click1,click2: Position
 --
 +Matrice(int):void
 +Matrice(string, int):void
 
 +getSize()const:int
-+getCell(Position):Cell
-+setCell(Position, int):void
++getCell(Position)const:Cell
++setCell(Position):void
++getCellColor(Position):int
 
 +isCellEmpty(Position): bool
++isAdjacent(Position, Position):bool
++isSideSwapable(Position, Position):bool
 +clearCase(Position):void
 +swapCases(Position,Position):void
 +fillVoid():void
-+updateEmptyCells():void</panel_attributes>
++updateEmptyCells():void
++updateOnClick(Position):void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>805</x>
-      <y>441</y>
-      <w>182</w>
-      <h>35</h>
+      <x>376</x>
+      <y>296</y>
+      <w>88</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m2=*
 </panel_attributes>
-    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>497</x>
-      <y>448</y>
-      <w>182</w>
-      <h>28</h>
+      <x>216</x>
+      <y>300</y>
+      <w>88</w>
+      <h>16</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>240.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>200.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>826</x>
-      <y>147</y>
-      <w>147</w>
-      <h>112</h>
+      <x>372</x>
+      <y>144</y>
+      <w>84</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>Position
 --
--x:int
--y:int
++x:int
++y:int
 --
 +Position(int,int):void
 
-+getPosX()const:int
-+getPosy()const:int
 +setPos(int,int):void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>889</x>
-      <y>252</y>
-      <w>98</w>
-      <h>147</h>
+      <x>408</x>
+      <y>188</y>
+      <w>56</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
@@ -184,22 +188,22 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>805</x>
-      <y>252</y>
-      <w>105</w>
-      <h>147</h>
+      <x>376</x>
+      <y>188</y>
+      <w>44</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes>130.0;10.0;130.0;190.0;10.0;190.0</additional_attributes>
+    <additional_attributes>90.0;10.0;90.0;190.0;10.0;190.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
-      <y>490</y>
-      <w>21</w>
-      <h>133</h>
+      <x>164</x>
+      <y>324</y>
+      <w>12</w>
+      <h>76</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
@@ -207,23 +211,297 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
-      <y>490</y>
-      <w>133</w>
-      <h>133</h>
+      <x>164</x>
+      <y>324</y>
+      <w>80</w>
+      <h>76</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0;170.0;100.0;170.0;170.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0;180.0;100.0;180.0;170.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>287</x>
-      <y>490</y>
-      <w>154</w>
-      <h>133</h>
+      <x>92</x>
+      <y>324</y>
+      <w>84</w>
+      <h>76</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>200.0;10.0;200.0;100.0;10.0;100.0;10.0;170.0</additional_attributes>
+    <additional_attributes>190.0;10.0;190.0;100.0;10.0;100.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1152</x>
+      <y>240</y>
+      <w>84</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Point
+--
++x:int
++y:int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1028</x>
+      <y>256</y>
+      <w>96</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>/BasicShape/
+--
+-center:Point
+-frameColor:Fl_Color
+-fillColor:Fl_Color
+--
++setFrameColor(Fl_Color):void
++setFillColor(Fl_Color):void
++getCenter()const:Point
++draw()const:void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>900</x>
+      <y>380</y>
+      <w>140</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Rectangle
+--
+-w:int
+-h:int
+--
++Rectangle(Point,int,int;Fl_Color,Fl_Color):void
++setPoint(Point):void
++draw()const:void
++onClick():void
++constains(Point)const:bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1076</x>
+      <y>384</y>
+      <w>116</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Circle
+--
+-int:r
+--
++Circle(Point,Fl_Color,int,Fl_Color):void
++circle(Point,int,int,Fl_Color):void
++draw() const:void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>316</y>
+      <w>120</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>280.0;10.0;280.0;120.0;10.0;120.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1068</x>
+      <y>316</y>
+      <w>64</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0;140.0;120.0;140.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1024</x>
+      <y>192</y>
+      <w>84</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>/Sketchable/
+--
+
+--
++draw()const:void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1132</x>
+      <y>308</y>
+      <w>84</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>/Clickable/
+--
+
+--
++contains(Point)const:bool
++onClick():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1040</x>
+      <y>224</y>
+      <w>12</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1120</x>
+      <y>252</y>
+      <w>40</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>860</x>
+      <y>260</y>
+      <w>128</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Canva
+--
+-p1,p2:Position
+-vect:vector&lt; shared_ptr&lt;BasicShape&gt; &gt;
+--
++Canvas(shared_ptr&lt;Matrice&gt;):void
++update(shared_ptr&lt;Matrice&gt;):void
++draw:void
++mouseClick(Point):Position</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1160</x>
+      <y>340</y>
+      <w>12</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1012</x>
+      <y>340</y>
+      <w>160</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>380.0;10.0;380.0;40.0;10.0;40.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>984</x>
+      <y>268</y>
+      <w>52</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>688</x>
+      <y>248</y>
+      <w>124</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>MainWindow
+--
+-mat:shared_ptr&lt;Matrice&gt;
+-canvas:Canva
+--
++Mainwindow(shared_ptr&lt;Matrice&gt;):void
++draw():void
++updateCanva():void
++handle(int):int
++Timer_CB(void*):void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>808</x>
+      <y>288</y>
+      <w>60</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>284</y>
+      <w>120</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>632</x>
+      <y>132</y>
+      <w>760</w>
+      <h>376</h>
+    </coordinates>
+    <panel_attributes>lw=0.5
+GUI</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>124</y>
+      <w>524</w>
+      <h>388</h>
+    </coordinates>
+    <panel_attributes>lw=0.5
+Logic</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

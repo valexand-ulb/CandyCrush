@@ -27,9 +27,6 @@ void Cell::swap(Cell& other) {
     other=std::move(temp);
 }
 
-void Cell::draw() {
-}
-
 Cell &Cell::operator=(const Cell& other) {
     position=other.position;
     pItem=other.pItem;
