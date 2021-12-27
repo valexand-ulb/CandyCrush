@@ -44,7 +44,6 @@ bool Matrice::isAdjacent(Position p1, Position p2)const{
 }
 
 bool Matrice::isSwapable(Position p1, Position p2) const{
-    verifier v;
     Position dir;
     bool swapable= false;
     for (auto &p:v.direction){
@@ -60,6 +59,21 @@ bool Matrice::isSwapable(Position p1, Position p2) const{
                 getCellColor(p1) == getCellColor({std::get<0>(t).x + p1.x, std::get<0>(t).y + p1.y}) &&
                 getCellColor(p1) == getCellColor({std::get<1>(t).x + p1.x, std::get<1>(t).y + p1.y}))
                 return 1;
+        }else if (dir==Position{0,-1}){// swap vers gauche
+            if (
+                getCellColor(p1) == getCellColor({std::get<0>(t).x + p1.x, -(std::get<0>(t).y) + p1.y}) &&
+                getCellColor(p1) == getCellColor({std::get<1>(t).x + p1.x, -(std::get<1>(t).y) + p1.y}))
+                return 1;
+        }else if (dir==Position{1,0}){// swap vers bas
+            if (
+                getCellColor(p1) == getCellColor({std::get<0>(t).y + p1.x,std::get<0>(t).x + p1.y}) &&
+                getCellColor(p1) == getCellColor({std::get<1>(t).y + p1.x,std::get<1>(t).x + p1.y}))
+                return 1;
+        }else{// swap vers haut
+            if (
+            getCellColor(p1) == getCellColor({-(std::get<0>(t).y) + p1.x,std::get<0>(t).x + p1.y}) &&
+            getCellColor(p1) == getCellColor({-(std::get<1>(t).y) + p1.x,std::get<1>(t).x + p1.y}))
+            return 1;
         }
     }
 
@@ -68,6 +82,21 @@ bool Matrice::isSwapable(Position p1, Position p2) const{
             if (
                 getCellColor(p2) == getCellColor({std::get<0>(t).x + p1.x, std::get<0>(t).y + p1.y}) &&
                 getCellColor(p2) == getCellColor({std::get<1>(t).x + p1.x, std::get<1>(t).y + p1.y}))
+                return 1;
+        }else if (dir==Position{0,-1}){// swap vers gauche
+            if (
+                getCellColor(p2) == getCellColor({std::get<0>(t).x + p1.x, -(std::get<0>(t).y) + p1.y}) &&
+                getCellColor(p2) == getCellColor({std::get<1>(t).x + p1.x, -(std::get<1>(t).y) + p1.y}))
+                return 1;
+        }else if (dir==Position{1,0}){// swap vers bas
+            if (
+                getCellColor(p2) == getCellColor({std::get<0>(t).y + p1.x,std::get<0>(t).x + p1.y}) &&
+                getCellColor(p2) == getCellColor({std::get<1>(t).y + p1.x,std::get<1>(t).x + p1.y}))
+                return 1;
+        }else{// swap vers haut
+            if (
+                getCellColor(p2) == getCellColor({-(std::get<0>(t).y) + p1.x,std::get<0>(t).x + p1.y}) &&
+                getCellColor(p2) == getCellColor({-(std::get<1>(t).y) + p1.x,std::get<1>(t).x + p1.y}))
                 return 1;
         }
     }
