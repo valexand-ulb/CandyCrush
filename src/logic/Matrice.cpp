@@ -49,10 +49,6 @@ bool Matrice::isSwapable(Position p1, Position p2) const{
     for (auto &p:v.direction){
         if (p2-p1 == p) dir = p;
     }
-    std::cout << "Click 1:"<< p1 << "\n";
-    std::cout << "Click 2:"<< p2 << "\n";
-    std::cout << "Dir 2:"<< dir << "\n";
-    std::cout << "--------------------------"<< "\n";
     for (auto &t:v.coord1){
         if (dir==Position{0,1}) {// swap vers droite
             if (
@@ -76,7 +72,6 @@ bool Matrice::isSwapable(Position p1, Position p2) const{
             return 1;
         }
     }
-
     for (auto &t:v.coord2){
         if (dir==Position{0,1}) {// swap vers droite
             if (
@@ -100,7 +95,6 @@ bool Matrice::isSwapable(Position p1, Position p2) const{
                 return 1;
         }
     }
-    std::cout << "Is swapable ?:" << swapable << std::endl;
     return swapable;
 }
 
