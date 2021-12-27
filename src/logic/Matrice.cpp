@@ -58,15 +58,16 @@ bool Matrice::isSwapable(Position p1, Position p2) const{
         if (dir==Position{0,1}) {// swap vers droite
             if (
                 getCellColor(p1) == getCellColor({std::get<0>(t).x + p1.x, std::get<0>(t).y + p1.y}) &&
-                getCellColor(p1) == getCellColor({std::get<0>(t).x + p1.x, std::get<0>(t).y + p1.y}))
+                getCellColor(p1) == getCellColor({std::get<1>(t).x + p1.x, std::get<1>(t).y + p1.y}))
                 return 1;
         }
     }
+
     for (auto &t:v.coord2){
         if (dir==Position{0,1}) {// swap vers droite
             if (
                 getCellColor(p2) == getCellColor({std::get<0>(t).x + p1.x, std::get<0>(t).y + p1.y}) &&
-                getCellColor(p2) == getCellColor({std::get<0>(t).x + p1.x, std::get<0>(t).y + p1.y}))
+                getCellColor(p2) == getCellColor({std::get<1>(t).x + p1.x, std::get<1>(t).y + p1.y}))
                 return 1;
         }
     }
@@ -123,7 +124,7 @@ void Matrice::updateOnClick(Position p1) {
         click1.x<0 ? click1=p1 : click2=p1;
     }
     if (!(click1.x<0 or click2.x<0)){
-        if (isAdjacent(click1, click2) && isSwapable(click1,click2));//swapCases(click1, click2);
+        if (isAdjacent(click1, click2) && isSwapable(click1,click2))swapCases(click1, click2);
         //reset les position
         click1.setPos(-1,-1);
         click2.setPos(-1,-1);
