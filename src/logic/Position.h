@@ -16,6 +16,8 @@ struct Position {
 
     //surcharge
     bool operator==(Position other){return x==other.x && y==other.y;}
+    Position operator-(Position const& other){return Position{x-other.x, y-other.y};}
+    friend std::ostream& operator<<(std::ostream& flux,const Position &p);
 };
 
 

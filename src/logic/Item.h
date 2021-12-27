@@ -27,7 +27,7 @@ private:
 public:
     //constructeur
     Candy(int clr){color=clr;}
-    ~Candy(){std::cout<<"mort de candy" << std::endl;}
+    ~Candy(){}
 
 };
 

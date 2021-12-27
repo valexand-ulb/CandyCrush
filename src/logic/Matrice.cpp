@@ -32,27 +32,46 @@ int Matrice::getCellColor(Position p) const {
     mat[p.x][p.y].getCandyColor() : -1;
 }
 //Méthodes
-bool Matrice::isCellEmpty(Position p) {
+bool Matrice::isCellEmpty(Position p) const{
     return mat[p.x][p.y].isEmpty();
 }
 
-bool Matrice::isAdjacent(Position p1, Position p2){
+bool Matrice::isAdjacent(Position p1, Position p2)const{
     return Position{p1.x+1, p1.y} == p2
         || Position{p1.x-1, p1.y} == p2
         || Position{p1.x, p1.y+1} == p2
         || Position{p1.x, p1.y-1} == p2;
 }
 
-bool Matrice::isSideSwapable(Position p1, Position p2) {
-    // pour click1
-    return (getCellColor(p1) == getCellColor({p1.x, p1.y+2}) && getCellColor(p1) == getCellColor({p1.x, p1.y+3}))
-    || (getCellColor(p1) == getCellColor({p1.x-1, p1.y+1}) && getCellColor(p1) == getCellColor({p1.x-2, p1.y+1}))
-    || (getCellColor(p1) == getCellColor({p1.x+1, p1.y+1}) && getCellColor(p1) == getCellColor({p1.x+2, p1.y+1}))
-    // pour click2
-    || (getCellColor(p2) == getCellColor({p1.x, p1.y-1}) && getCellColor(p2) == getCellColor({p1.x, p1.y-2}))
-    || (getCellColor(p2) == getCellColor({p1.x-1, p1.y}) && getCellColor(p2) == getCellColor({p1.x-2, p1.y}))
-    || (getCellColor(p2) == getCellColor({p1.x+1, p1.y}) && getCellColor(p2) == getCellColor({p1.x+2, p1.y}));
-
+bool Matrice::isSwapable(Position p1, Position p2) const{
+    verifier v;
+    Position dir;
+    bool swapable= false;
+    for (auto &p:v.direction){
+        if (p2-p1 == p) dir = p;
+    }
+    std::cout << "Click 1:"<< p1 << "\n";
+    std::cout << "Click 2:"<< p2 << "\n";
+    std::cout << "Dir 2:"<< dir << "\n";
+    std::cout << "--------------------------"<< "\n";
+    for (auto &t:v.coord1){
+        if (dir==Position{0,1}) {// swap vers droite
+            if (
+                getCellColor(p1) == getCellColor({std::get<0>(t).x + p1.x, std::get<0>(t).y + p1.y}) &&
+                getCellColor(p1) == getCellColor({std::get<0>(t).x + p1.x, std::get<0>(t).y + p1.y}))
+                return 1;
+        }
+    }
+    for (auto &t:v.coord2){
+        if (dir==Position{0,1}) {// swap vers droite
+            if (
+                getCellColor(p2) == getCellColor({std::get<0>(t).x + p1.x, std::get<0>(t).y + p1.y}) &&
+                getCellColor(p2) == getCellColor({std::get<0>(t).x + p1.x, std::get<0>(t).y + p1.y}))
+                return 1;
+        }
+    }
+    std::cout << "Is swapable ?:" << swapable << std::endl;
+    return swapable;
 }
 
 void Matrice::clearCase(Position p) {
@@ -104,7 +123,7 @@ void Matrice::updateOnClick(Position p1) {
         click1.x<0 ? click1=p1 : click2=p1;
     }
     if (!(click1.x<0 or click2.x<0)){
-        if (isAdjacent(click1, click2)&&isSideSwapable(click1, click2))swapCases(click1, click2);
+        if (isAdjacent(click1, click2) && isSwapable(click1,click2));//swapCases(click1, click2);
         //reset les position
         click1.setPos(-1,-1);
         click2.setPos(-1,-1);

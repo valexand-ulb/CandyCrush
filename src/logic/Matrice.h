@@ -4,9 +4,10 @@
 
 #ifndef CANDYCRUSH_MATRICE_H
 #define CANDYCRUSH_MATRICE_H
-# include <vector>
+#include <vector>
+#include <tuple>
 #include "Cell.h"
-#include "Position.h"
+
 
 class Matrice {
 private:
@@ -14,6 +15,16 @@ private:
     Position click1,click2;
     std::vector<std::vector<Cell>> mat;
     std::vector<Position> emptyCells;
+    struct verifier{
+        const std::vector<Position> direction={{0,1},{0,-1},{-1,0},{1,0}};
+        const std::vector<std::tuple<Position,Position>> coord1={
+                {{0,2},{0,3}},{{1,1},{2,1}},
+                {{-1,1},{-2,1}},{{-1,1},{1,1}}};
+        const std::vector<std::tuple<Position,Position>> coord2={
+                {{0,-1},{0,-2}},{{1,0},{2,0}},
+                {{-1,0},{-2,0}},{{-1,0},{1,0}}
+        };
+    };
 public:
     //constructeurs
     Matrice(int size);
@@ -24,9 +35,9 @@ public:
     void setCell(Position p, int color=-1){mat[p.x][p.y].setItem(color);}
     int getCellColor(Position p)const;
     //méthodes
-    bool isCellEmpty(Position p);
-    bool isAdjacent(Position p1, Position p2);
-    bool isSideSwapable(Position p1, Position p2);
+    bool isCellEmpty(Position p)const;
+    bool isAdjacent(Position p1, Position p2)const;
+    bool isSwapable(Position p1, Position p2)const;
     void clearCase(Position p);
     void swapCases(Position p1, Position p2);
     void fillVoid();

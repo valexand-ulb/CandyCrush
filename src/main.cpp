@@ -1,10 +1,7 @@
 //
 // Created by alex on 20/11/21.
 //
-
-//#include "logic/Matrice.h"
 #include "gui/Mainwindow.h"
-
 
 int main(int argc, char *argv[]){
     /*

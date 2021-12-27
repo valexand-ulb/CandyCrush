@@ -5,7 +5,7 @@
 #ifndef CANDYCRUSH_CELL_H
 #define CANDYCRUSH_CELL_H
 #include "Item.h"
-#include "../gui/BasicShapes.h"
+
 
 class Cell{
 private:
