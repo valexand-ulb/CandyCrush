@@ -15,6 +15,7 @@ private:
     Position click1,click2;
     std::vector<std::vector<Cell>> mat;
     std::vector<Position> emptyCells;
+    std::vector<Position> toDelete;
     struct verifier{
         const std::vector<Position> direction={{0,1},{0,-1},{-1,0},{1,0}};
         const std::vector<std::tuple<Position,Position>> coord1={
@@ -39,10 +40,12 @@ public:
     bool isCellEmpty(Position p)const;
     bool isAdjacent(Position p1, Position p2)const;
     bool isSwapable(Position p1, Position p2)const;
+    bool isInDelete(Position p)const;
     void clearCase(Position p);
     void swapCases(Position p1, Position p2);
     void fillVoid();
     void updateEmptyCells();
+    int updateToDelete();
     void updateOnClick(Position p1);
     //surcharge
     friend std::ostream& operator<<(std::ostream& flux,const Matrice &m);

@@ -97,11 +97,18 @@ bool Matrice::isSwapable(Position p1, Position p2) const{
     }
     return swapable;
 }
+bool Matrice::isInDelete(Position p) const {
+    for (auto &pos:toDelete){
+        if(pos==p) return 1;
+    }
+    return 0;
+}
+
 
 void Matrice::clearCase(Position p) {
     mat[p.x][p.y].clear();
     emptyCells.push_back(p);
-    fillVoid();
+    std::cout << "mort de " << p << std::endl;
 }
 
 void Matrice::swapCases(Position p1, Position p2) {
@@ -121,10 +128,56 @@ void Matrice::swapCases(Position p1, Position p2) {
 }
 
 void Matrice::updateEmptyCells() {
-    for (unsigned long int i=0; i<emptyCells.size(); i++){
-        if (!isCellEmpty(emptyCells[i])){
-            emptyCells.erase(emptyCells.begin()+i);
+    for (unsigned int i=0; i<emptyCells.size(); i++){
+        if (!isCellEmpty(emptyCells[i])) emptyCells.erase(emptyCells.begin()+i);
+    }
+}
+
+int Matrice::updateToDelete() {
+    int num=0;
+    for (int i=0; i<size; i++){
+        for (int j=0; j<size; j++){
+            bool same_color= 1;
+            for (int k=-1;k<2; k++){
+                same_color &= getCellColor({i,j}) == getCellColor({i+k,j});
+            }
+            if (same_color) {
+                for(int k=-1;k<2; k++){
+                    if (!isInDelete({i+k,j})){
+                        toDelete.push_back({i+k,j});
+                        num++;
+                    }
+                }
+            }
         }
+    }
+    return num;
+}
+
+
+void Matrice::updateOnClick(Position p1) {
+    if (p1.x != -1) { // si la cellule est sur le tableau
+        click1.x<0 ? click1=p1 : click2=p1;
+    }
+    if (!(click1.x<0 or click2.x<0)){
+        if (isAdjacent(click1, click2) && isSwapable(click1,click2))swapCases(click1, click2);
+        for (auto &pos:toDelete){
+            std::cout << pos << std::endl;
+        }
+        int num_of_case_to_del = 0;
+        do {
+            num_of_case_to_del = updateToDelete();
+            while(toDelete.size() >0){
+                clearCase(toDelete.back());
+                toDelete.pop_back();
+            }
+            fillVoid();
+        }while(num_of_case_to_del !=0);
+
+        //reset les position
+        click1.setPos(-1,-1);
+        click2.setPos(-1,-1);
+        std::cout << *this << std::endl;
     }
 }
 
@@ -138,23 +191,8 @@ void Matrice::fillVoid() {
         }else{
             setCell(p);
         }
-        std::cout << *this << std::endl;
     }
 }
-
-void Matrice::updateOnClick(Position p1) {
-    if (p1.x != -1) { // si la cellule est sur le tableau
-        click1.x<0 ? click1=p1 : click2=p1;
-    }
-    if (!(click1.x<0 or click2.x<0)){
-        if (isAdjacent(click1, click2) && isSwapable(click1,click2))swapCases(click1, click2);
-        //reset les position
-        click1.setPos(-1,-1);
-        click2.setPos(-1,-1);
-        std::cout << *this << std::endl;
-    }
-}
-
 //Surcharge
 std::ostream& operator<<(std::ostream &flux,const Matrice& M) {
     for (int i=0; i<M.getSize(); i++){
