@@ -137,14 +137,27 @@ int Matrice::updateToDelete() {
     int num=0;
     for (int i=0; i<size; i++){
         for (int j=0; j<size; j++){
-            bool same_color= 1;
+            bool same_color1= 1; bool same_color2= 1;
             for (int k=-1;k<2; k++){
-                same_color &= getCellColor({i,j}) == getCellColor({i+k,j});
+                same_color1 &= getCellColor({i,j}) == getCellColor({i+k,j});
+                same_color2 &= getCellColor({j,i}) == getCellColor({j,i+k});
             }
-            if (same_color) {
+            if (same_color1){
                 for(int k=-1;k<2; k++){
-                    if (!isInDelete({i+k,j})){
-                        toDelete.push_back({i+k,j});
+                    Position p{i+k,j};
+                    if (!isInDelete(p)){
+                        std::cout << "Push de:" << p << std::endl;
+                        toDelete.push_back(p);
+                        num++;
+                    }
+                }
+            }
+            if (same_color2){
+                for(int k=-1;k<2; k++){
+                    Position p{j,i+k};
+                    if (!isInDelete(p)){
+                        std::cout << "Push de:" << p << std::endl;
+                        toDelete.push_back(p);
                         num++;
                     }
                 }
@@ -154,26 +167,21 @@ int Matrice::updateToDelete() {
     return num;
 }
 
-
 void Matrice::updateOnClick(Position p1) {
     if (p1.x != -1) { // si la cellule est sur le tableau
         click1.x<0 ? click1=p1 : click2=p1;
     }
     if (!(click1.x<0 or click2.x<0)){
         if (isAdjacent(click1, click2) && isSwapable(click1,click2))swapCases(click1, click2);
-        for (auto &pos:toDelete){
-            std::cout << pos << std::endl;
-        }
         int num_of_case_to_del = 0;
         do {
             num_of_case_to_del = updateToDelete();
-            while(toDelete.size() >0){
+            while(toDelete.size()>0){
                 clearCase(toDelete.back());
                 toDelete.pop_back();
             }
             fillVoid();
-        }while(num_of_case_to_del !=0);
-
+        } while(num_of_case_to_del !=0);
         //reset les position
         click1.setPos(-1,-1);
         click2.setPos(-1,-1);

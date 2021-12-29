@@ -4,7 +4,6 @@ all:CandyCrush
 
 CandyCrush: main.o Matrice.o Cell.o Item.o Position.o Mainwindow.o Canvas.o BasicShape.o Functionable.o Point.o
 	g++ -o CandyCrush main.o Matrice.o Cell.o Item.o Position.o Mainwindow.o Canvas.o BasicShape.o Functionable.o Point.o -lfltk
-
 Cell.o: logic/Cell.h logic/Cell.cpp
 	g++ $(FLAGS) -c logic/Cell.cpp -o Cell.o
 Item.o: logic/Item.h logic/Item.cpp

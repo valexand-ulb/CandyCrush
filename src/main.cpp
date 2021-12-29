@@ -28,7 +28,7 @@ int main(int argc, char *argv[]){
     m.fillVoid();
     std::cout << m << std::endl;
     */
-    auto mat=std::make_shared<Matrice>(15);
+    auto mat=std::make_shared<Matrice>(10);
     std::cout << *mat << std::endl;
     MainWindow window{mat};
     window.show(argc, argv);
