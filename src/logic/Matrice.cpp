@@ -106,9 +106,9 @@ bool Matrice::isInDelete(Position p) const {
 
 
 void Matrice::clearCase(Position p) {
+    std::cout << "mort de " << p << std::endl;
     mat[p.x][p.y].clear();
     emptyCells.push_back(p);
-    std::cout << "mort de " << p << std::endl;
 }
 
 void Matrice::swapCases(Position p1, Position p2) {
@@ -120,10 +120,13 @@ void Matrice::swapCases(Position p1, Position p2) {
     }else if(c1.isEmpty() && !c2.isEmpty()){
         c1.swap(c2); // echange les cellules
         emptyCells.push_back(p2); //p1 est une cellule vide et son contenu est echangé en p2, ajoute p2 dans emptyCells
-    }/*else if(!c1.isEmpty() && c2.isEmpty()){
+    }else if(!c1.isEmpty() && c2.isEmpty()){
         c1.swap(c2);
-        emptyCells.push(p1);
-    }*/
+        emptyCells.push_back(p1);
+    }else if (c1.isEmpty() && c2.isEmpty()){
+        emptyCells.push_back(p1);
+        emptyCells.push_back(p2);
+    }
     updateEmptyCells();
 }
 
@@ -137,29 +140,23 @@ int Matrice::updateToDelete() {
     int num=0;
     for (int i=0; i<size; i++){
         for (int j=0; j<size; j++){
-            bool same_color1= 1; bool same_color2= 1;
-            for (int k=-1;k<2; k++){
-                same_color1 &= getCellColor({i,j}) == getCellColor({i+k,j});
-                same_color2 &= getCellColor({j,i}) == getCellColor({j,i+k});
+            std::vector<Position> temp1 = {Position{i,j}, Position {i,j-1}, Position {i,j+1}};
+            std::vector<Position> temp2 = {Position{j,i}, Position {j-1,i}, Position {j+1,i}};
+            bool same_color_hor=1;bool same_color_ver=1;
+            for (unsigned int i=1; i<temp1.size(); i++){
+                same_color_hor &= (getCellColor(temp1[0]) == getCellColor(temp1[i]));
+                same_color_ver &= (getCellColor(temp2[0]) == getCellColor(temp2[i]));
             }
-            if (same_color1){
-                for(int k=-1;k<2; k++){
-                    Position p{i+k,j};
-                    if (!isInDelete(p)){
-                        std::cout << "Push de:" << p << std::endl;
-                        toDelete.push_back(p);
-                        num++;
-                    }
+            if (same_color_hor){
+                for (auto p:temp1){
+                    toDelete.push_back(p);
+                    num++;
                 }
             }
-            if (same_color2){
-                for(int k=-1;k<2; k++){
-                    Position p{j,i+k};
-                    if (!isInDelete(p)){
-                        std::cout << "Push de:" << p << std::endl;
-                        toDelete.push_back(p);
-                        num++;
-                    }
+            if (same_color_ver){
+                for (auto p:temp2){
+                    toDelete.push_back(p);
+                    num++;
                 }
             }
         }
@@ -172,16 +169,15 @@ void Matrice::updateOnClick(Position p1) {
         click1.x<0 ? click1=p1 : click2=p1;
     }
     if (!(click1.x<0 or click2.x<0)){
-        if (isAdjacent(click1, click2) && isSwapable(click1,click2))swapCases(click1, click2);
-        int num_of_case_to_del = 0;
-        do {
-            num_of_case_to_del = updateToDelete();
-            while(toDelete.size()>0){
-                clearCase(toDelete.back());
-                toDelete.pop_back();
-            }
-            fillVoid();
-        } while(num_of_case_to_del !=0);
+        if (isAdjacent(click1, click2) && isSwapable(click1,click2)){
+            swapCases(click1, click2);
+        }
+        updateToDelete();
+        while(toDelete.size()>0){
+            clearCase(toDelete.back());
+            toDelete.pop_back();
+        }
+        fillVoid();
         //reset les position
         click1.setPos(-1,-1);
         click2.setPos(-1,-1);
@@ -191,15 +187,26 @@ void Matrice::updateOnClick(Position p1) {
 
 void Matrice::fillVoid() {
     Position p;
+    for (auto &p1:emptyCells){
+        std::cout << p1 << " ; ";
+    }
+    std::cout << std::endl;
     while (!emptyCells.empty()){
         p = emptyCells.back();
         emptyCells.pop_back();
         if (p.x !=0){
+            std::cout << "swap de " << p << " et " << Position{p.x-1, p.y} << std::endl;
             swapCases(p, {p.x-1, p.y});
         }else{
             setCell(p);
         }
+        std::cout << *this << std::endl;
     }
+    for (auto &p1:emptyCells){
+        std::cout << p1 << " ; ";
+    }
+    std::cout << std::endl;
+
 }
 //Surcharge
 std::ostream& operator<<(std::ostream &flux,const Matrice& M) {
