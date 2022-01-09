@@ -13,18 +13,20 @@ Matrice::Matrice(int size):size(size){
     }
 }
 
-Matrice::Matrice(std::string file_path, int size): size(size){
-    std::fstream file;
-    file.open(file_path,std::ios::in);
-    if (file.is_open()){
-        std::string line;
-        int i=0;
-        while (getline(file, line)){
-            i+=1;
-        }
-        file.close();
+Matrice::Matrice(std::string file_path,int size):size(size){
+    std::vector<char> vect;
+    std::ifstream file(file_path);
+    char c;
+    while (file >> c){
+        vect.push_back(c);
     }
-
+    for (int i=0; i<size; i++){
+        mat.push_back({});
+        for (int j=0; j<size; j++){
+            Cell c{Position{i,j},(int)vect[i+j]-'0'};
+            mat[i].push_back(c);
+        }
+    }
 }
 
 int Matrice::getCellColor(Position p) const {
@@ -33,7 +35,7 @@ int Matrice::getCellColor(Position p) const {
 }
 //Méthodes
 bool Matrice::isCellEmpty(Position p) const{
-    return mat[p.x][p.y].isEmpty();
+    return getCell(p).isEmpty();
 }
 
 bool Matrice::isAdjacent(Position p1, Position p2)const{
