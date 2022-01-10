@@ -28,7 +28,7 @@ Matrice::Matrice(std::string file_path,int size):size(size){
         }
     }
 }
-
+// Getters et Setters
 int Matrice::getCellColor(Position p) const {
     return (0<= p.x && p.x < size && 0<= p.y && p.y < size) ?
     mat[p.x][p.y].getCandyColor() : -1;
@@ -174,12 +174,15 @@ void Matrice::updateOnClick(Position p1) {
         if (isAdjacent(click1, click2) && isSwapable(click1,click2)){
             swapCases(click1, click2);
         }
-        updateToDelete();
-        while(toDelete.size()>0){
-            clearCase(toDelete.back());
-            toDelete.pop_back();
-        }
-        fillVoid();
+        int n;
+        do {
+            n=updateToDelete();
+            while (toDelete.size() > 0) {
+                clearCase(toDelete.back());
+                toDelete.pop_back();
+            }
+            fillVoid();
+        } while (n>0);
         //reset les position
         click1.setPos(-1,-1);
         click2.setPos(-1,-1);
@@ -189,25 +192,15 @@ void Matrice::updateOnClick(Position p1) {
 
 void Matrice::fillVoid() {
     Position p;
-    for (auto &p1:emptyCells){
-        std::cout << p1 << " ; ";
-    }
-    std::cout << std::endl;
     while (!emptyCells.empty()){
         p = emptyCells.back();
         emptyCells.pop_back();
         if (p.x !=0){
-            std::cout << "swap de " << p << " et " << Position{p.x-1, p.y} << std::endl;
             swapCases(p, {p.x-1, p.y});
         }else{
             setCell(p);
         }
-        std::cout << *this << std::endl;
     }
-    for (auto &p1:emptyCells){
-        std::cout << p1 << " ; ";
-    }
-    std::cout << std::endl;
 
 }
 //Surcharge
