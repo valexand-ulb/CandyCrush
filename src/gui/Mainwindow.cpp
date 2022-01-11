@@ -5,9 +5,9 @@
 #include "Mainwindow.h"
 
 MainWindow::MainWindow(std::shared_ptr <Matrice> mat):
-Fl_Window(000, 000, windowWidth, windowHeight, "CandyCrush"), mat(mat), canvas(Canvas{mat}){
+Fl_Window(000, 000, windowWidth, windowHeight, "CandyCrush-par Vinovrski Alexandre-501.157"), mat(mat), canvas(Canvas{mat}){
     Fl::add_timeout(1.0 / refreshPerSecond, Timer_CB, this);
-    resizable(this);
+    //resizable(this);
 }
 
 void MainWindow::draw() {

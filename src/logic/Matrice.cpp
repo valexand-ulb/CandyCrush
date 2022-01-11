@@ -11,6 +11,16 @@ Matrice::Matrice(int size):size(size){
             mat[i].push_back(c);
         }
     }
+    // premier passage pour effacer les 3bonbons
+    int n;
+    do {
+        n=updateToDelete();
+        while (toDelete.size() > 0) {
+            clearCase(toDelete.back());
+            toDelete.pop_back();
+        }
+        fillVoid();
+    } while (n>0);
 }
 
 Matrice::Matrice(std::string file_path,int size):size(size){
