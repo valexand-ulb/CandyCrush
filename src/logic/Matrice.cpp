@@ -118,7 +118,6 @@ bool Matrice::isInDelete(Position p) const {
 
 
 void Matrice::clearCase(Position p) {
-    std::cout << "mort de " << p << std::endl;
     mat[p.x][p.y].clear();
     emptyCells.push_back(p);
 }
@@ -196,7 +195,6 @@ void Matrice::updateOnClick(Position p1) {
         //reset les position
         click1.setPos(-1,-1);
         click2.setPos(-1,-1);
-        std::cout << *this << std::endl;
     }
 }
 
